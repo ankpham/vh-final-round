@@ -85,7 +85,7 @@ const ViewQuestion = () => {
         
     }
 
-    let url = 'http://localhost:8080/get/questions/3/round/2/category/';
+    let url = 'http://localhost:8080/get/questions/10/round/2/category/';
 
     useEffect(()=> {
         if (currentQuestion === 0) {
@@ -107,7 +107,7 @@ const ViewQuestion = () => {
         }
 
         
-        if (currentQuestion >= 2) {
+        if (currentQuestion >= 9) {
             setnextButtonStyle({display: 'none'})
         }
 
@@ -168,7 +168,7 @@ const ViewQuestion = () => {
                 <Link className="link back-to-selection" to={"/selection"}>Trở Về Trang Đầu</Link> 
                 <div className='question'>
                     <div className='question-row'>
-                        <div>
+                        <div hidden>
                             <h5>Category {category}</h5>
                             <h5>Id: {currentQuestionId}</h5>
                         </div>
