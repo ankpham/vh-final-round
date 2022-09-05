@@ -10,6 +10,7 @@ import VLSelection from './pages/VLSelection';
 import VLViewQuestion from './pages/VLViewQuestion';
 import Selection from './pages/Selection';
 import ViewQuestion from './pages/ViewQuestion';
+import ViewOERQuestion from './pages/ViewOERQuestion';
 
 function App() {
   const page = useRef(null);
@@ -36,6 +37,7 @@ function App() {
         <Route path="/vl-selection" element={<VLSelection/>} exact/>
         <Route path="/vl-view-question/:category/:points" element={<VLViewQuestion/>} exact/>
         <Route path="/view-question/:category" element={<ViewQuestion/>} exact/>
+        <Route path="/view-oer-question/:category" element={<ViewOERQuestion/>} exact/>
       </Routes>
     </Router>
     <button ref={fullScreenButton} style={{right: '0', display: 'flex', position: 'absolute'}} onClick={() => fullscreen()}>Full Screen</button>
