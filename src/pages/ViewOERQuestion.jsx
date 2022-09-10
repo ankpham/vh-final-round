@@ -46,7 +46,7 @@ const VLViewQuestion = () => {
     const [choicesStyle, setChoicesStyle] = useState({display: 'block'});
     const [timerStyle, setTimerStyle] = useState({display: 'none'});
 
-    const {category } = useParams();
+    const { category } = useParams();
 
     //Confetti Effect
     const confetti = useRef(null);

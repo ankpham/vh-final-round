@@ -35,33 +35,33 @@ const VLSelection = () => {
                     <div ref={categoryElement} className="category">
                         <div className='column'>
                             <span className="select border-yellow">Category 1</span>
-                            <Link onClick={() => newUsedQuestion(1,1)} to={"/vl-view-question/1/10"} className="select border-yellow">10</Link>
-                            <Link onClick={() => newUsedQuestion(1,2)} to={"/vl-view-question/1/20"} className="select border-yellow">20</Link>
-                            <Link onClick={() => newUsedQuestion(1,3)} to={"/vl-view-question/1/30"} className="select border-yellow">30</Link>
+                            <Link onClick={() => newUsedQuestion(1,1)} to={"/vl-view-question/1-1/10"} className="select border-yellow">10</Link>
+                            <Link onClick={() => newUsedQuestion(1,2)} to={"/vl-view-question/1-1/20"} className="select border-yellow">20</Link>
+                            <Link onClick={() => newUsedQuestion(1,3)} to={"/vl-view-question/1-1/30"} className="select border-yellow">30</Link>
                         </div>
                         <div className='column'>
                             <span className="select border-red">Category 2</span>
-                            <Link onClick={() => newUsedQuestion(2,1)} to={"/vl-view-question/2/10"} className="select border-red">10</Link>
-                            <Link onClick={() => newUsedQuestion(2,2)} to={"/vl-view-question/2/20"} className="select border-red">20</Link>
-                            <Link onClick={() => newUsedQuestion(2,3)} to={"/vl-view-question/2/30"} className="select border-red">30</Link>
+                            <Link onClick={() => newUsedQuestion(2,1)} to={"/vl-view-question/1-2/10"} className="select border-red">10</Link>
+                            <Link onClick={() => newUsedQuestion(2,2)} to={"/vl-view-question/1-2/20"} className="select border-red">20</Link>
+                            <Link onClick={() => newUsedQuestion(2,3)} to={"/vl-view-question/1-2/30"} className="select border-red">30</Link>
                         </div>
                         <div className='column'>
                             <span className="select border-green">Category 3</span>
-                            <Link onClick={() => newUsedQuestion(3,1)} to={"/vl-view-question/3/10"} className="select border-green">10</Link>
-                            <Link onClick={() => newUsedQuestion(3,2)} to={"/vl-view-question/3/20"} className="select border-green">20</Link>
-                            <Link onClick={() => newUsedQuestion(3,3)} to={"/vl-view-question/3/30"} className="select border-green">30</Link>
+                            <Link onClick={() => newUsedQuestion(3,1)} to={"/vl-view-question/1-3/10"} className="select border-green">10</Link>
+                            <Link onClick={() => newUsedQuestion(3,2)} to={"/vl-view-question/1-3/20"} className="select border-green">20</Link>
+                            <Link onClick={() => newUsedQuestion(3,3)} to={"/vl-view-question/1-3/30"} className="select border-green">30</Link>
                         </div>
                         <div className='column'>
                             <span className="select border-orange">Category 4</span>
-                            <Link onClick={() => newUsedQuestion(4,1)} to={"/vl-view-question/4/10"} className="select border-orange">10</Link>
-                            <Link onClick={() => newUsedQuestion(4,2)} to={"/vl-view-question/4/20"} className="select border-orange">20</Link>
-                            <Link onClick={() => newUsedQuestion(4,3)} to={"/vl-view-question/4/30"} className="select border-orange">30</Link>
+                            <Link onClick={() => newUsedQuestion(4,1)} to={"/vl-view-question/1-4/10"} className="select border-orange">10</Link>
+                            <Link onClick={() => newUsedQuestion(4,2)} to={"/vl-view-question/1-4/20"} className="select border-orange">20</Link>
+                            <Link onClick={() => newUsedQuestion(4,3)} to={"/vl-view-question/1-4/30"} className="select border-orange">30</Link>
                         </div>
                         <div className='column'>
                             <span className="select border-cyan">Category 5</span>
-                            <Link onClick={() => newUsedQuestion(5,1)} to={"/vl-view-question/5/10"} className="select border-cyan">10</Link>
-                            <Link onClick={() => newUsedQuestion(5,2)} to={"/vl-view-question/5/20"} className="select border-cyan">20</Link>
-                            <Link onClick={() => newUsedQuestion(5,3)} to={"/vl-view-question/5/30"} className="select border-cyan">30</Link>
+                            <Link onClick={() => newUsedQuestion(5,1)} to={"/vl-view-question/1-5/10"} className="select border-cyan">10</Link>
+                            <Link onClick={() => newUsedQuestion(5,2)} to={"/vl-view-question/1-5/20"} className="select border-cyan">20</Link>
+                            <Link onClick={() => newUsedQuestion(5,3)} to={"/vl-view-question/1-5/30"} className="select border-cyan">30</Link>
                         </div>
                     </div>
                 </div>
