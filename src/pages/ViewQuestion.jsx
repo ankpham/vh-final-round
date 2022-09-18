@@ -37,15 +37,22 @@ const ViewQuestion = () => {
         });
     }
 
-    const displayIcon = (questionLocation) => {
-        if (questionLocation === 'correct') {
-            correctElement.current.childNodes[1].classList.add('active-x-check');
+    const displayIcon = (questionLocation, isRemove) => {
+        if (isRemove) {
+            correctElement.current.childNodes[1].classList.remove('active-x-check');
+            wrongElement1.current.childNodes[1].classList.remove('active-x-check');
+            wrongElement2.current.childNodes[1].classList.remove('active-x-check');
         }
-        else if (questionLocation === 'wrong1') {
-            wrongElement1.current.childNodes[1].classList.add('active-x-check');
-        }
-        else if (questionLocation === 'wrong2') {
-            wrongElement2.current.childNodes[1].classList.add('active-x-check');
+        else {
+            if (questionLocation === 'correct') {
+                correctElement.current.childNodes[1].classList.add('active-x-check');
+            }
+            else if (questionLocation === 'wrong1') {
+                wrongElement1.current.childNodes[1].classList.add('active-x-check');
+            }
+            else if (questionLocation === 'wrong2') {
+                wrongElement2.current.childNodes[1].classList.add('active-x-check');
+            }
         }
     }
 
@@ -53,6 +60,7 @@ const ViewQuestion = () => {
     const pass = "0842-0983-ibjw-2q9w";
 
     const NextQuestion = () => {
+        displayIcon('current', 'remove')
         setCurrentQuestion(currentQuestion+1)
         let plcehldr = currentQuestion+1;
 
@@ -130,22 +138,22 @@ const ViewQuestion = () => {
     }
 
     const correctChoice = (
-        <li ref={correctElement} onClickCapture={() => playDingSound()} onClick={() => {
+        <div onClickCapture={() => playDingSound()} onClick={() => {
             setConfetti(true)
             displayIcon('correct')
-        }} className='border-yellow'>{choice1}<BsCheckLg className="inactive-check"/></li>
+        }} className='border-yellow'><p ref={correctElement} className="question-text">{choice1}<BsCheckLg className="inactive-check"/></p></div>
     )
 
     const otherChoice1 = (
-        <li ref={wrongElement1} onClickCapture={() => playBuzzerSound()} onClick={() => {
+        <div onClickCapture={() => playBuzzerSound()} onClick={() => {
             displayIcon('wrong1')
-        }} className='border-yellow'>{choice2}<BsXLg className='inactive-x'/></li>
+        }} className='border-yellow'><p ref={wrongElement1} className="question-text">{choice2}<BsXLg className='inactive-x'/></p></div>
     )
 
     const otherChoice2 = (
-        <li ref={wrongElement2} onClickCapture={() => playBuzzerSound()} onClick={() => {
+        <div onClickCapture={() => playBuzzerSound()} onClick={() => {
             displayIcon('wrong2')
-        }} className='border-yellow'>{choice3}<BsXLg className='inactive-x'/></li>
+        }} className='border-yellow'><p ref={wrongElement2} className="question-text">{choice3}<BsXLg className='inactive-x'/></p></div>
     )
     
     let arr = [correctChoice,otherChoice1,otherChoice2];
@@ -177,7 +185,7 @@ const ViewQuestion = () => {
                         </div>
                         <h1 ref={confetti} className='question-heading'>{question}</h1>
                     </div>
-                    <ul className="choices">
+                    <div className="choices">
                         <div className='choice-container'>
                             <TbLetterA className='letter-icon'/>{displayA}
                         </div>
@@ -187,7 +195,7 @@ const ViewQuestion = () => {
                         <div className='choice-container'>
                             <TbLetterC className='letter-icon'/>{displayC}
                         </div>
-                    </ul>
+                    </div>
                 </div>
                 <p style={nextButtonStyle} onClick={() => NextQuestion()} className='link next-question'>Câu Hỏi Kế Tiếp</p>
             </div>
