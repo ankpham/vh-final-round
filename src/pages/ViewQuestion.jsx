@@ -93,7 +93,7 @@ const ViewQuestion = () => {
         
     }
 
-    let url = 'http://localhost:8080/get/questions/10/round/2/category/';
+    let url = 'http://44.202.103.225:8080/get/questions/10/round/2/category/';
 
     useEffect(()=> {
         if (currentQuestion === 0) {

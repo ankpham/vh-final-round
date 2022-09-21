@@ -121,7 +121,7 @@ const VLViewQuestion = () => {
         
     }
 
-    let url = 'http://localhost:8080/get/questions/3/round/3/category/';
+    let url = 'http://44.202.103.225:8080/get/questions/3/round/3/category/';
 
     useEffect(()=> {
         if (currentQuestion === 0) {
