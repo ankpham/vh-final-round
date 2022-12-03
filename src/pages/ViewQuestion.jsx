@@ -23,6 +23,7 @@ const ViewQuestion = () => {
     const [choice2, setChoice2] = useState('no choice');
     const [choice3, setChoice3] = useState('no choice');
     const [nextButtonStyle, setnextButtonStyle] = useState({display: 'block'});
+    const [questionElementStyle, setquestionElementStyle] = useState({display: 'none'});
 
     const {category } = useParams();
 
@@ -93,7 +94,7 @@ const ViewQuestion = () => {
         
     }
 
-    let url = 'http://44.202.103.225:8080/get/questions/10/round/2/category/';
+    let url = 'http:/vhgamebackend.hvmatl.org:8080/get/questions/10/round/2/category/';
 
     useEffect(()=> {
         if (currentQuestion === 0) {
@@ -111,6 +112,7 @@ const ViewQuestion = () => {
                     setChoice1(arr[0]);
                     setChoice2(arr[1]);
                     setChoice3(arr[2]);
+                    setquestionElementStyle({})
                 })
         }
 
@@ -174,7 +176,7 @@ const ViewQuestion = () => {
         <div className='view-question'> 
             <div id="container" className='container'>
                 <Link className="link back-to-selection" to={"/selection"}>Trở Về Trang Đầu</Link> 
-                <div className='question'>
+                <div style={questionElementStyle} className='question'>
                     <div className='question-row'>
                         <div hidden>
                             <h5>Category {category}</h5>

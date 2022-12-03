@@ -17,6 +17,7 @@ const VLViewQuestion = () => {
     const [choice1, setChoice1] = useState('no choice');
     const [choice2, setChoice2] = useState('no choice');
     const [choice3, setChoice3] = useState('no choice');
+    const [questionElementStyle, setquestionElementStyle] = useState({display: 'none'});
 
     const { category, points } = useParams();
 
@@ -47,7 +48,7 @@ const VLViewQuestion = () => {
     const pass = "0842-0983-ibjw-2q9w";
 
     useEffect(()=>{
-        axios.get('http://44.202.103.225:8080/get/question/round/2/category/' + category + 
+        axios.get('http://vhgamebackend.hvmatl.org:8080/get/question/round/2/category/' + category + 
         '/points/' + points, {auth: { username: user, password: pass}}
         ).then((response) => {
             console.log(response.data.id)
@@ -57,6 +58,7 @@ const VLViewQuestion = () => {
             setChoice1(arr[0]);
             setChoice2(arr[1]);
             setChoice3(arr[2]);
+            setquestionElementStyle({})
         })
     }, [category, points]);
 
@@ -111,7 +113,7 @@ const VLViewQuestion = () => {
         <div className='view-question'> 
             <div id="container" className='container'>
                 <Link className="link back-to-selection" to={"/vl-selection"}>Trở Về Trang Đầu</Link> 
-                <div className='question'>
+                <div style={questionElementStyle} className='question'>
                     <div className='question-row'>
                         <div hidden>
                             <h5>Category {category}</h5>
