@@ -38,8 +38,8 @@
     margin-top: 2.5%;
     margin-bottom: 2.5%;
     box-shadow: 2px 2px 5px gray;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-    color: white;
+    /*text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;*/
+    color: midnightblue;
     text-decoration: none;
 }
 
@@ -73,8 +73,7 @@
 
 .selection .selection-container-category-points .category .column .select:first-child {
     cursor: default;
-    padding-top: 3vh;
-    padding-bottom: 3vh;
+    height: 16%;
 }
 
 .selection .selection-container-category-points .category .column .select:first-child:hover {
@@ -83,6 +82,7 @@
 
 .selection .selection-container-category-points .category .column .select {
     width: 100%;
+    font-size: 22px;
     border-width: 3px;
     background-color: #f8f4f4;
     text-decoration: none;

@@ -1,8 +1,6 @@
 import axios from 'axios';
 import React, {useState, useEffect, useRef} from 'react';
 import party from 'party-js';
-import Timer from './Timer';
-import {TbLetterA, TbLetterB, TbLetterC} from 'react-icons/tb';
 import {BsCheckLg, BsXLg} from 'react-icons/bs';
 import { useParams, Link } from "react-router-dom";
 import ding from '../assets/Em Vui Em Học - Correct Answer - 1s.mp3';
@@ -43,8 +41,6 @@ const VLViewQuestion = () => {
     const [choice2, setChoice2] = useState('no choice');
     const [choice3, setChoice3] = useState('no choice');
     const [nextButtonStyle, setnextButtonStyle] = useState({display: 'block'});
-    const [choicesStyle, setChoicesStyle] = useState({display: 'block'});
-    const [timerStyle, setTimerStyle] = useState({display: 'none'});
     const [questionElementStyle, setquestionElementStyle] = useState({display: 'none'});
 
     const { category } = useParams();
@@ -115,11 +111,6 @@ const VLViewQuestion = () => {
             arr[i] = arr[j];
             arr[j] = temp;
         }
-    
-        displayA = arr[0];
-        displayB = arr[1];
-        displayC = arr[2];
-        
     }
 
     let url = 'http://vhgamebackend.hvmatl.org:8080/get/questions/3/round/3/category/';
@@ -165,15 +156,6 @@ const VLViewQuestion = () => {
         
         if (currentQuestion >= 2) {
             setnextButtonStyle({display: 'none'})
-        }
-
-        if (currentQuestionType === 'mc') {
-            setChoicesStyle({display: 'block'})
-            setTimerStyle({display: 'block'})
-        }
-        else if (currentQuestionType === 'oer') {
-            setChoicesStyle({display: 'none'})
-            setTimerStyle({display: 'none'})
         }
         
     }, [currentQuestion, url, category, currentQuestionType]);
@@ -223,9 +205,6 @@ const VLViewQuestion = () => {
         arr[j] = temp;
     }
 
-    let displayA = arr[0];
-    let displayB = arr[1];
-    let displayC = arr[2];
     return (
         <>
         <div className='view-question'> 
@@ -237,22 +216,8 @@ const VLViewQuestion = () => {
                             <h5>Category {category}</h5>
                             <h5>Id: {currentQuestionId}</h5>
                         </div>
-                        <div className='timer' style={timerStyle}>
-                            <Timer/>
-                        </div>
                         <div ref={confetti} className='question-heading'>{question}</div>
                     </div>
-                    <ul style={choicesStyle} className="choices">
-                        <div className='choice-container'>
-                            <TbLetterA className='letter-icon'/>{displayA}
-                        </div>
-                        <div className='choice-container'>
-                            <TbLetterB className='letter-icon'/>{displayB}
-                        </div>
-                        <div className='choice-container'>
-                            <TbLetterC className='letter-icon'/>{displayC}
-                        </div>
-                    </ul>
                 </div>
                 <p style={nextButtonStyle} onClick={() => NextQuestion()} className='link next-question'>Câu Hỏi Kế Tiếp</p>
             </div>

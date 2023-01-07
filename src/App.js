@@ -8,7 +8,7 @@ import Home from './pages/Home';
 import VLHome from './pages/VLHome';
 import VLSelection from './pages/VLSelection';
 import VLViewQuestion from './pages/VLViewQuestion';
-import Selection from './pages/Selection';
+import RoundSelection from './pages/RoundSelection';
 import ViewQuestion from './pages/ViewQuestion';
 import ViewOERQuestion from './pages/ViewOERQuestion';
 
@@ -32,7 +32,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home/>} exact/>
-        <Route path="/selection" element={<Selection/>} exact/>
+        <Route path="/selection" element={<RoundSelection/>} exact/>
         <Route path="/vl-home" element={<VLHome/>} exact/>
         <Route path="/vl-selection" element={<VLSelection/>} exact/>
         <Route path="/vl-view-question/:category/:points" element={<VLViewQuestion/>} exact/>

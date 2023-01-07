@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Selection = () => {
+const RoundSelection = () => {
     return (
-        <div className='selection'>
+        <div className='round-selection'>
             <div className='container'>
                 <div className='select-round'>
                     <Link className="link" to="/vl-home">Vỡ Lòng</Link>
@@ -15,4 +15,4 @@ const Selection = () => {
     )
 }
 
-export default Selection;
+export default RoundSelection;

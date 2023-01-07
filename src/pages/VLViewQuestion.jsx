@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useMemo, useState, useEffect, useRef} from 'react';
 import party from 'party-js';
 import Timer from './Timer';
 import {TbLetterA, TbLetterB, TbLetterC} from 'react-icons/tb';
@@ -9,9 +9,14 @@ import ding from '../assets/Em Vui Em Học - Correct Answer - 1s.mp3';
 import buzzer from '../assets/Em Vui Em Học - Wrong Answer Buzzer - 2s.mp3';
 
 const VLViewQuestion = () => {
+    const questionElement = useRef(null);
     const correctElement = useRef(null);
     const wrongElement1 = useRef(null);
     const wrongElement2 = useRef(null);
+    const correctContainer = useRef(null);
+    const wrongContainer1 = useRef(null);
+    const wrongContainer2 = useRef(null);
+    const [letterIcon, setLetterIcon] = useState('');
 
     const [question, setQuestion] = useState('no question');
     const [choice1, setChoice1] = useState('no choice');
@@ -21,11 +26,23 @@ const VLViewQuestion = () => {
 
     const { category, points } = useParams();
 
-    //Confetti Effect
-    const confetti = useRef(null);
+    let selectionMapping = useMemo(() => 
+         new Map([
+             ["1", "border-orchid"], ["2", "border-lightblue"], ["3", "border-yellow"], 
+             ["4", "border-red"], ["5", "border-green"]
+         ])
+     , [])
 
+     let selectionMappingBackground = useMemo(() => 
+         new Map([
+             ["1", "background-orchid"], ["2", "background-lightblue"], ["3", "background-yellow"], 
+             ["4", "background-red"], ["5", "background-green"]
+         ])
+     , [])
+
+    //Confetti Effect
     const setConfetti = () => {
-        party.confetti(confetti.current, {
+        party.confetti(questionElement.current, {
             count: party.variation.range(100, 200),
             size: party.variation.range(2, 2.5),
             spread: party.variation.range(80, 160)
@@ -48,6 +65,12 @@ const VLViewQuestion = () => {
     const pass = "0842-0983-ibjw-2q9w";
 
     useEffect(()=>{
+
+        correctContainer.current.classList.add(selectionMapping.get(category))
+        wrongContainer1.current.classList.add(selectionMapping.get(category))
+        wrongContainer2.current.classList.add(selectionMapping.get(category))
+        setLetterIcon(selectionMappingBackground.get(category))
+
         axios.get('http://vhgamebackend.hvmatl.org:8080/get/question/round/2/category/' + category + 
         '/points/' + points, {auth: { username: user, password: pass}}
         ).then((response) => {
@@ -77,20 +100,20 @@ const VLViewQuestion = () => {
     }
 
     const correctChoice = (
-        <div onClickCapture={() => playDingSound()} onClick={() => {
+        <div ref={correctContainer} onClickCapture={() => playDingSound()} onClick={() => {
             setConfetti(true)
             displayIcon('correct')
         }} className='border-yellow'><p ref={correctElement} className="question-text">{choice1}<BsCheckLg className="inactive-check"/></p></div>
     )
 
     const otherChoice1 = (
-        <div onClickCapture={() => playBuzzerSound()} onClick={() => {
+        <div ref={wrongContainer1} onClickCapture={() => playBuzzerSound()} onClick={() => {
             displayIcon('wrong1')
         }} className='border-yellow'><p ref={wrongElement1} className="question-text">{choice2}<BsXLg className='inactive-x'/></p></div>
     )
 
     const otherChoice2 = (
-        <div onClickCapture={() => playBuzzerSound()} onClick={() => {
+        <div ref={wrongContainer2} onClickCapture={() => playBuzzerSound()} onClick={() => {
             displayIcon('wrong2')
         }} className='border-yellow'><p ref={wrongElement2} className="question-text">{choice3}<BsXLg className='inactive-x'/></p></div>
     )
@@ -122,17 +145,17 @@ const VLViewQuestion = () => {
                         <div className='timer'>
                             <Timer/>
                         </div>
-                        <h1 ref={confetti} className='question-heading'>{question}</h1>
+                        <h1 ref={questionElement} className='question-heading'>{question}</h1>
                     </div>
                     <div className="choices">
                         <div className='choice-container'>
-                            <TbLetterA className='letter-icon'/>{displayA}
+                            <TbLetterA className={'letter-icon ' + letterIcon}/>{displayA}
                         </div>
                         <div className='choice-container'>
-                            <TbLetterB className='letter-icon'/>{displayB}
+                            <TbLetterB className={'letter-icon ' + letterIcon}/>{displayB}
                         </div>
                         <div className='choice-container'>
-                            <TbLetterC className='letter-icon'/>{displayC}
+                            <TbLetterC className={'letter-icon ' + letterIcon}/>{displayC}
                         </div>
                     </div>
                 </div>

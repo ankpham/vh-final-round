@@ -22,10 +22,10 @@
 }
 
 .question-heading {
-    font-size: 35px;
+    font-size: 30px;
     font-weight: 400;
     text-align: center;
-    padding-top: 10%;
+    padding-top: 7%;
     margin-left: auto;
     margin-right: auto;
     color: black;
@@ -88,24 +88,17 @@
 }
 
 .letter-icon {
-    background-color: yellow;
     float: left;
     height: 25px;
     width: 25px;
-    padding-top: 4.4%;
-    padding-bottom: 4.4%;
-    padding-left: 2%;
-    padding-right: 5%;
-    border-radius: 1000px;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    margin-right: 3%;
-    margin-left: .3%;
+    padding: 4%;
+    margin: 1%;
+    border-radius: 10px;
     cursor: pointer;
 }
 
 .timer p {
-    background-color: red;
+    background-color: midnightblue;
     text-align: center;
     float: right;
     position: absolute;
@@ -116,10 +109,11 @@
     right: 9.5vw;
     border-radius: 1200px;
     cursor: pointer;
+    color: white;
 }
 
 .timer p.active {
-    background-color: green;
+    background-color: midnightblue;
 }
 
 .inactive-check {

@@ -1,18 +1,18 @@
-.selection {
+.round-selection {
     display: flex;
     height: 100vh;
     width: 100%;
     text-align: center;
 }
 
-.selection .container .select-round {
+.round-selection .container .select-round {
     margin-top: 15%;
     text-align: center;
     display: flex;
     flex-direction: column;
 }
 
-.selection .container .select-round .link {
+.round-selection .container .select-round .link {
     color: white;
     background-color: rgb(0, 0, 70);
     margin: auto;

@@ -12,7 +12,7 @@
 
 body {
     overflow: hidden; /*remove overflow hidden to add scrollbar and access full screen button*/
-    color: navy;
+    color: midnightblue;
     font-family: Cambria;
     font-weight: 600;
 }
@@ -44,12 +44,12 @@ body {
 }
 
 .link {
-    color: navy;
+    color: midnightblue;
     display: block;
     text-align: center;
     width: 200px;
     text-decoration: none;
-    border: navy solid 2px;
+    border: midnightblue solid 2px;
     border-radius: 10px;
     padding: 10px;
     margin: 5px;
@@ -58,11 +58,11 @@ body {
 }
 
 .link:hover {
-    border: navy 3px solid;
+    border: midnightblue 3px solid;
 }
 
 .link:active {
-    border: navy 4px solid;
+    border: midnightblue 4px solid;
 }
 
 .select {
@@ -82,11 +82,11 @@ body {
 }
 
 .select:hover {
-    border: 2px navy inset;
+    border: 2px midnightblue inset;
 }
 
 .select.active {
-    border: 3px navy inset;
+    border: 3px midnightblue inset;
 }
 
 .link.back-to-selection {
@@ -132,7 +132,7 @@ input {
 }
 
 .link.next {
-    color: navy;
+    color: midnightblue;
     border: none;
     font-weight: 900;
     font-size: 90px;
