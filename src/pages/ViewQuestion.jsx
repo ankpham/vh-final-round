@@ -182,6 +182,9 @@ const ViewQuestion = () => {
                             <h5>Category {category}</h5>
                             <h5>Id: {currentQuestionId}</h5>
                         </div>
+                        <div className='question-number'>
+                            <h1>{currentQuestion+1}/10</h1>
+                        </div>
                         <div className='timer'>
                             <Timer/>
                         </div>
