@@ -1,14 +1,36 @@
+//This version has 3 questions with next button. Category must be 3 for all
+
+
+
+
 import axios from 'axios';
 import React, {useState, useEffect, useRef} from 'react';
 import party from 'party-js';
-import Timer from './Timer';
-import {TbLetterA, TbLetterB, TbLetterC} from 'react-icons/tb';
 import {BsCheckLg, BsXLg} from 'react-icons/bs';
 import { useParams, Link } from "react-router-dom";
 import ding from '../assets/Em Vui Em Học - Correct Answer - 1s.mp3';
 import buzzer from '../assets/Em Vui Em Học - Wrong Answer Buzzer - 2s.mp3';
 
-const ViewQuestion = () => {
+//Question split into paragraphs
+
+const QuestionSplitIntoLines = (props) => {
+    return (
+        <>
+        {props.data.map((question, idx) => (
+            <div className='question-oer'>
+                <h1 key={idx} className='question-oer-line'>{question.text}</h1>
+            </div>
+        ))}
+        </>
+    )
+}
+
+//setQuestion(<QuestionSplitIntoLines data={questionData}/>);
+
+
+//Question split into paragraphs
+
+const VLViewQuestion = () => {
 
     const correctElement = useRef(null);
     const wrongElement1 = useRef(null);
@@ -17,6 +39,7 @@ const ViewQuestion = () => {
     const [questionList, setQuestionList] = useState([])
 
     const [currentQuestionId, setCurrentQuestionId] = useState(0);
+    const [currentQuestionType, setCurrentQuestionType] = useState('');
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [question, setQuestion] = useState('no question');
     const [choice1, setChoice1] = useState('no choice');
@@ -25,7 +48,7 @@ const ViewQuestion = () => {
     const [nextButtonStyle, setnextButtonStyle] = useState({display: 'block'});
     const [questionElementStyle, setquestionElementStyle] = useState({display: 'none'});
 
-    const {category } = useParams();
+    const { category } = useParams();
 
     //Confetti Effect
     const confetti = useRef(null);
@@ -38,22 +61,15 @@ const ViewQuestion = () => {
         });
     }
 
-    const displayIcon = (questionLocation, isRemove) => {
-        if (isRemove) {
-            correctElement.current.childNodes[1].classList.remove('active-x-check');
-            wrongElement1.current.childNodes[1].classList.remove('active-x-check');
-            wrongElement2.current.childNodes[1].classList.remove('active-x-check');
+    const displayIcon = (questionLocation) => {
+        if (questionLocation === 'correct') {
+            correctElement.current.childNodes[1].classList.add('active-x-check');
         }
-        else {
-            if (questionLocation === 'correct') {
-                correctElement.current.childNodes[1].classList.add('active-x-check');
-            }
-            else if (questionLocation === 'wrong1') {
-                wrongElement1.current.childNodes[1].classList.add('active-x-check');
-            }
-            else if (questionLocation === 'wrong2') {
-                wrongElement2.current.childNodes[1].classList.add('active-x-check');
-            }
+        else if (questionLocation === 'wrong1') {
+            wrongElement1.current.childNodes[1].classList.add('active-x-check');
+        }
+        else if (questionLocation === 'wrong2') {
+            wrongElement2.current.childNodes[1].classList.add('active-x-check');
         }
     }
 
@@ -61,13 +77,26 @@ const ViewQuestion = () => {
     const pass = "0842-0983-ibjw-2q9w";
 
     const NextQuestion = () => {
-        displayIcon('current', 'remove')
         setCurrentQuestion(currentQuestion+1)
         let plcehldr = currentQuestion+1;
 
         setCurrentQuestionId(questionList[plcehldr].id);
         setQuestion(questionList[plcehldr].question);
         
+        let questionTemp = questionList[plcehldr].question.split("*newline*");
+
+        let questionTempSplitAsArrOfObj = []
+    
+        for (let i = 0;i<questionTemp.length;i++) {
+            questionTempSplitAsArrOfObj.push(
+                {
+                    text: questionTemp[i]
+                }
+            )
+        }
+        
+        setQuestion(<QuestionSplitIntoLines data={questionTempSplitAsArrOfObj} placeholder={plcehldr}/>)
+
         arr = [
             questionList[plcehldr].correctChoice,
             questionList[plcehldr].otherChoices[0],
@@ -87,14 +116,9 @@ const ViewQuestion = () => {
             arr[i] = arr[j];
             arr[j] = temp;
         }
-    
-        displayA = arr[0];
-        displayB = arr[1];
-        displayC = arr[2];
-        
     }
 
-    let url = 'http://vhgamebackend.hvmatl.org:8080/get/questions/10/round/2/category/2';
+    let url = 'http://vhgamebackend.hvmatl.org:8080/get/questions/3/round/2/category/3';
 
     useEffect(()=> {
         if (currentQuestion === 0) {
@@ -103,27 +127,45 @@ const ViewQuestion = () => {
                 ).then((response) => {
                     setQuestionList(response.data);
                     setCurrentQuestionId(response.data[0].id);
+                    setCurrentQuestionType(response.data[0].type);
                     setQuestion(response.data[0].question);
+
+                    let questionTemp = response.data[0].question.split("*newline*");
+
+                    let questionTempSplitAsArrOfObj = []
+                
+                    for (let i = 0;i<questionTemp.length;i++) {
+                        questionTempSplitAsArrOfObj.push(
+                            {
+                                text: questionTemp[i]
+                            }
+                        )
+                    }
+                    
+                    setQuestion(<QuestionSplitIntoLines data={questionTempSplitAsArrOfObj}/>)
+
                     let arr = [
                         response.data[0].correctChoice,
                         response.data[0].otherChoices[0],
                         response.data[0].otherChoices[1]
                     ]
+                    
                     setChoice1(arr[0]);
                     setChoice2(arr[1]);
                     setChoice3(arr[2]);
                     setquestionElementStyle({})
+
                 })
         }
 
         
-        if (currentQuestion >= 9) {
+        if (currentQuestion >= 2) {
             setnextButtonStyle({display: 'none'})
         }
+        
+    }, [currentQuestion, url, category, currentQuestionType]);
 
 
-
-    }, [currentQuestion, url, category]);
 
     //Sound Effect
     let dingSoundEffect = new Audio(ding);
@@ -140,22 +182,22 @@ const ViewQuestion = () => {
     }
 
     const correctChoice = (
-        <div onClickCapture={() => playDingSound()} onClick={() => {
+        <li ref={correctElement} onClickCapture={() => playDingSound()} onClick={() => {
             setConfetti(true)
             displayIcon('correct')
-        }} className='border-yellow'><p ref={correctElement} className="question-text">{choice1}<BsCheckLg className="inactive-check"/></p></div>
+        }} className='border-yellow'>{choice1}<BsCheckLg className="inactive-check"/></li>
     )
 
     const otherChoice1 = (
-        <div onClickCapture={() => playBuzzerSound()} onClick={() => {
+        <li ref={wrongElement1} onClickCapture={() => playBuzzerSound()} onClick={() => {
             displayIcon('wrong1')
-        }} className='border-yellow'><p ref={wrongElement1} className="question-text">{choice2}<BsXLg className='inactive-x'/></p></div>
+        }} className='border-yellow'>{choice2}<BsXLg className='inactive-x'/></li>
     )
 
     const otherChoice2 = (
-        <div onClickCapture={() => playBuzzerSound()} onClick={() => {
+        <li ref={wrongElement2} onClickCapture={() => playBuzzerSound()} onClick={() => {
             displayIcon('wrong2')
-        }} className='border-yellow'><p ref={wrongElement2} className="question-text">{choice3}<BsXLg className='inactive-x'/></p></div>
+        }} className='border-yellow'>{choice3}<BsXLg className='inactive-x'/></li>
     )
     
     let arr = [correctChoice,otherChoice1,otherChoice2];
@@ -168,9 +210,6 @@ const ViewQuestion = () => {
         arr[j] = temp;
     }
 
-    let displayA = arr[0];
-    let displayB = arr[1];
-    let displayC = arr[2];
     return (
         <>
         <div className='view-question'> 
@@ -182,21 +221,7 @@ const ViewQuestion = () => {
                             <h5>Category {category}</h5>
                             <h5>Id: {currentQuestionId}</h5>
                         </div>
-                        <div className='timer'>
-                            <Timer/>
-                        </div>
-                        <h1 ref={confetti} className='question-heading'>{question}</h1>
-                    </div>
-                    <div className="choices">
-                        <div className='choice-container'>
-                            <TbLetterA className='letter-icon'/>{displayA}
-                        </div>
-                        <div className='choice-container'>
-                            <TbLetterB className='letter-icon'/>{displayB}
-                        </div>
-                        <div className='choice-container'>
-                            <TbLetterC className='letter-icon'/>{displayC}
-                        </div>
+                        <div ref={confetti} className='question-heading'>{question}</div>
                     </div>
                 </div>
                 <p style={nextButtonStyle} onClick={() => NextQuestion()} className='link next-question'>Câu Hỏi Kế Tiếp</p>
@@ -206,4 +231,4 @@ const ViewQuestion = () => {
     )
 }
 
-export default ViewQuestion;
+export default VLViewQuestion;

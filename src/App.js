@@ -5,12 +5,13 @@ from 'react-router-dom';
 import './style/style.css'
 
 import Home from './pages/Home';
-import VLHome from './pages/VLHome';
 import VLSelection from './pages/VLSelection';
 import VLViewQuestion from './pages/VLViewQuestion';
 import RoundSelection from './pages/RoundSelection';
 import ViewQuestion from './pages/ViewQuestion';
 import ViewOERQuestion from './pages/ViewOERQuestion';
+import R2Home from './pages/R2Home';
+import R3Home from './pages/R3Home';
 
 function App() {
   const page = useRef(null);
@@ -32,8 +33,10 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home/>} exact/>
+        <Route path="/r2-home" element={<R2Home/>} exact/>
+        <Route path="/r3-home" element={<R3Home/>} exact/>
         <Route path="/selection" element={<RoundSelection/>} exact/>
-        <Route path="/vl-home" element={<VLHome/>} exact/>
+        <Route path="/selection" element={<RoundSelection/>} exact/>
         <Route path="/vl-selection" element={<VLSelection/>} exact/>
         <Route path="/vl-view-question/:category/:points" element={<VLViewQuestion/>} exact/>
         <Route path="/view-question/:category" element={<ViewQuestion/>} exact/>

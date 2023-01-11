@@ -24,7 +24,8 @@ const VLViewQuestion = () => {
     const [choice3, setChoice3] = useState('no choice');
     const [questionElementStyle, setquestionElementStyle] = useState({display: 'none'});
 
-    const { category, points } = useParams();
+    const { points, category } = useParams();
+    let colorCategory = category.charAt(2);
 
     let selectionMapping = useMemo(() => 
          new Map([
@@ -66,13 +67,13 @@ const VLViewQuestion = () => {
 
     useEffect(()=>{
 
-        correctContainer.current.classList.add(selectionMapping.get(category))
-        wrongContainer1.current.classList.add(selectionMapping.get(category))
-        wrongContainer2.current.classList.add(selectionMapping.get(category))
-        setLetterIcon(selectionMappingBackground.get(category))
+        correctContainer.current.classList.add(selectionMapping.get(colorCategory))
+        wrongContainer1.current.classList.add(selectionMapping.get(colorCategory))
+        wrongContainer2.current.classList.add(selectionMapping.get(colorCategory))
+        setLetterIcon(selectionMappingBackground.get(colorCategory))
 
         axios.get('http://vhgamebackend.hvmatl.org:8080/get/question/round/2/category/' + category + 
-        '/points/' + points, {auth: { username: user, password: pass}}
+        '/grade/vl/points/' + points, {auth: { username: user, password: pass}}
         ).then((response) => {
             console.log(response.data.id)
             setQuestion(response.data.question);
