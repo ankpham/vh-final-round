@@ -136,7 +136,6 @@ const VLViewQuestion = () => {
         <>
         <div className='view-question'> 
             <div id="container" className='container'>
-                <Link className="link back-to-selection" to={"/vl-selection"}>Trở Về Trang Đầu</Link> 
                 <div style={questionElementStyle} className='question'>
                     <div className='question-row'>
                         <div hidden>
@@ -160,6 +159,8 @@ const VLViewQuestion = () => {
                         </div>
                     </div>
                 </div>
+                <Link className="link back-to-selection" to={"/vl-selection"}>Trở Về Trang Đầu</Link> 
+
             </div>
         </div>
         </>

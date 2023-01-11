@@ -90,10 +90,18 @@ body {
 }
 
 .link.back-to-selection {
+    display: block;
+    float: left;
+    font-size: 23px;
+}
+
+.link.back-to-selection-right {
     position: absolute;
     margin-right: 5%;
-    margin-top: 1.9%;
+    margin-top: 10%;
+    font-size: 23px;
     right: 0;
+    top: 0;
 }
 
 .link.admin {

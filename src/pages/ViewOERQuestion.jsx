@@ -26,7 +26,6 @@ const ViewOERQuestion = (props) => {
         <>
         <div className='view-question'> 
             <div id="container" className='container'>
-                <Link className="link back-to-selection" to={"/r3-home"}>Trở Về Trang Đầu</Link> 
                 <div className='question'>
                     <div className='question-row'>
                         <div hidden>
@@ -36,6 +35,7 @@ const ViewOERQuestion = (props) => {
                         <div style={{fontSize: '70px', fontWeight: 500}} ref={questionElement} className='question-heading'>{question}</div>
                     </div>
                 </div>
+                <Link className="link back-to-selection" to={"/r3-home"}>Trở Về Trang Đầu</Link> 
             </div>
         </div>
         </>

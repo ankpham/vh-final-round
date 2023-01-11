@@ -175,7 +175,6 @@ const ViewQuestion = () => {
         <>
         <div className='view-question'> 
             <div id="container" className='container'>
-                <Link className="link back-to-selection" to={"/selection"}>Trở Về Trang Đầu</Link> 
                 <div style={questionElementStyle} className='question'>
                     <div className='question-row'>
                         <div hidden>
@@ -192,16 +191,17 @@ const ViewQuestion = () => {
                     </div>
                     <div className="choices">
                         <div className='choice-container'>
-                            <TbLetterA className='letter-icon'/>{displayA}
+                            <TbLetterA className='letter-icon background-yellow'/>{displayA}
                         </div>
                         <div className='choice-container'>
-                            <TbLetterB className='letter-icon'/>{displayB}
+                            <TbLetterB className='letter-icon background-yellow'/>{displayB}
                         </div>
                         <div className='choice-container'>
-                            <TbLetterC className='letter-icon'/>{displayC}
+                            <TbLetterC className='letter-icon background-yellow'/>{displayC}
                         </div>
                     </div>
                 </div>
+                <Link className="link back-to-selection" to={"/selection"}>Trở Về Trang Đầu</Link> 
                 <p style={nextButtonStyle} onClick={() => NextQuestion()} className='link next-question'>Câu Hỏi Kế Tiếp</p>
             </div>
         </div>
