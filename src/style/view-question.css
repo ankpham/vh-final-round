@@ -22,13 +22,13 @@
 }
 
 .question-heading {
-    font-size: 30px;
+    font-size: 40px;
     font-weight: 400;
     text-align: center;
     padding-top: 7%;
     margin-left: auto;
     margin-right: auto;
-    color: black;
+    color: midnightblue;
     width: 55%;
 }
 
@@ -74,10 +74,11 @@
 .question .choices .choice-container div p.question-text {
     display: inline-block;
     width: 70%;
-    font-size: 25px;
+    font-size: 35px;
     user-select: none;
     cursor: pointer;
     border: none;
+    color: midnightblue;
     box-shadow: none;
     word-break: break-word;
 }
