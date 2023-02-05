@@ -2,7 +2,7 @@ import React, {useRef, useState} from 'react';
 import { useEffect } from 'react';
 import timerAudio from '../assets/Em Vui Em Học - Timer - 15s.mp3';
 
-const Timer = () => {
+const Timer = (props) => {
     const audioElement = useRef(null);
     const timerElement = useRef(null);
 
@@ -11,7 +11,11 @@ const Timer = () => {
     const [timerPlayedBefore, setTimerPlayedBefore] = useState(false);
 
     const toggle = () => {
-        if (isActive === true) {
+        if (seconds <= 0) {
+            resetTimer()
+            setTimerPlayedBefore(false)
+        }
+        else if (isActive === true) {
             setIsActive(false);
         }
         else{
@@ -20,6 +24,11 @@ const Timer = () => {
     }
 
     useEffect(() => {
+        if (props.reset === true) {
+            console.log("oiruej")
+            resetTimer();
+        }
+
         let interval = null;
         if (isActive) {
             interval = setInterval(() => {
@@ -32,7 +41,8 @@ const Timer = () => {
             timerElement.current.classList.remove("active")
         }
         return () => clearInterval(interval);
-    }, [isActive, seconds])
+
+    }, [isActive, seconds, props.reset])
 
     const playTimerAudio = () => {
         if (seconds <= 0) {
@@ -48,6 +58,13 @@ const Timer = () => {
         }
     }
 
+    const resetTimer = () => {
+        setSeconds(15)
+        setIsActive(false)
+        setTimerPlayedBefore(false)
+        console.log("asd")
+    }
+
     return (
         <>
         <audio hidden ref={audioElement} src={timerAudio}/>
@@ -56,4 +73,4 @@ const Timer = () => {
     )
 }
 
-export default Timer;
+export default Timer;  
