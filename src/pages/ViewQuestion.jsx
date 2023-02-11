@@ -107,7 +107,7 @@ const ViewQuestion = () => {
         setdisplayC(arr[2]);
     }
 
-    let url = 'http://vh.backend.hvmatl.org:8080/get/questions/10/round/2/category/2';
+    let url = 'http://vh.backend.hvmatl.org:8080/get/questions/12/round/2/category/2';
 
     useEffect(()=> {
         if (currentQuestion === 0) {
@@ -160,7 +160,7 @@ const ViewQuestion = () => {
                 })
             }
         }
-        if (currentQuestion >= 9) {
+        if (currentQuestion >= 11) {
             setnextButtonStyle({display: 'none'})
         }
     }, [currentQuestion, url, category, choices, reloadCounter]);
@@ -179,7 +179,7 @@ const ViewQuestion = () => {
                             {timerState}
                         </div>
                         <div className='question-number'>
-                            <h1>{currentQuestion+1}/10</h1>
+                            <h1>{currentQuestion+1}/12</h1>
                         </div>
                         <h1 ref={confetti} className='question-heading'>{question}</h1>
                     </div>
