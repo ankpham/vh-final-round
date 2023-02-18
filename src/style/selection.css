@@ -13,8 +13,8 @@
 }
 
 .round-selection .container .select-round .link {
+    background-color: midnightblue;
     color: white;
-    background-color: rgb(0, 0, 70);
     margin: auto;
     font-size: 35px;
     margin-top: 2%;
