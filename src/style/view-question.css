@@ -31,6 +31,7 @@
     color: midnightblue;
     width: 58%;
     margin-bottom: 12%;
+    text-shadow: black 0 1px 1.5px;
 }
 
 .question .question-row {
@@ -75,7 +76,8 @@
 .question .choices .choice-container div p.question-text {
     display: inline-block;
     width: 70%;
-    font-size: 35px;
+    text-shadow: black 0 1px 1.5px;
+    font-size: 36px;
     user-select: none;
     cursor: pointer;
     border: none;
@@ -97,6 +99,7 @@
     margin: 1%;
     border-radius: 10px;
     cursor: pointer;
+    color: white;
 }
 
 .timer p {
