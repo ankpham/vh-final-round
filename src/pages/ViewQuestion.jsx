@@ -185,13 +185,13 @@ const ViewQuestion = () => {
                     </div>
                     <div className="choices">
                         <div className='choice-container'>
-                            <TbLetterA className='letter-icon background-yellow'/>{displayA}
+                            <TbLetterA className='letter-icon background-orange'/>{displayA}
                         </div>
                         <div className='choice-container'>
-                            <TbLetterB className='letter-icon background-yellow'/>{displayB}
+                            <TbLetterB className='letter-icon background-orange'/>{displayB}
                         </div>
                         <div className='choice-container'>
-                            <TbLetterC className='letter-icon background-yellow'/>{displayC}
+                            <TbLetterC className='letter-icon background-orange'/>{displayC}
                         </div>
                     </div>
                 </div>

@@ -77,7 +77,7 @@
     cursor: default;
     color: white !important;
     text-shadow: black 0px 0px 4px;
-    height: 200%;
+    height: 70%;
 }
 
 .selection .selection-container-category-points .category .column .select:first-child:hover {
