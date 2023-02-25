@@ -47,9 +47,9 @@ const VLSelection = () => {
                         </div>
                         <div className='column'>
                             <span className="select background-yellow border-yellow">Món Ăn</span>
-                            <Link onClick={() => newUsedQuestion(3,1)} to={"/vl-view-question/1-3/10"} className="select border-yellow">10</Link>
-                            <Link onClick={() => newUsedQuestion(3,2)} to={"/vl-view-question/1-3/20"} className="select border-yellow">20</Link>
-                            <Link onClick={() => newUsedQuestion(3,3)} to={"/vl-view-question/1-3/30"} className="select border-yellow">30</Link>
+                            <Link onClick={() => newUsedQuestion(3,1)} to={"/vl-view-question/1-3/10"} className="select border-orange">10</Link>
+                            <Link onClick={() => newUsedQuestion(3,2)} to={"/vl-view-question/1-3/20"} className="select border-orange">20</Link>
+                            <Link onClick={() => newUsedQuestion(3,3)} to={"/vl-view-question/1-3/30"} className="select border-orange">30</Link>
                         </div>
                         <div className='column'>
                             <span className="select background-red border-red">Phong Tục Tập Quán</span>

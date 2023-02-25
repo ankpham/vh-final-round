@@ -29,14 +29,14 @@ const VLViewQuestion = () => {
 
     let selectionMapping = useMemo(() => 
          new Map([
-             ["1", "border-orchid"], ["2", "border-lightblue"], ["3", "border-yellow"], 
+             ["1", "border-orchid"], ["2", "border-lightblue"], ["3", "border-orange"], 
              ["4", "border-red"], ["5", "border-green"]
          ])
      , [])
 
      let selectionMappingBackground = useMemo(() => 
          new Map([
-             ["1", "background-orchid"], ["2", "background-lightblue"], ["3", "background-yellow"], 
+             ["1", "background-orchid"], ["2", "background-lightblue"], ["3", "background-orange"], 
              ["4", "background-red"], ["5", "background-green"]
          ])
      , [])

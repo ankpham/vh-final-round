@@ -7,7 +7,7 @@
 }
 
 .border-red {
-    border-color: rgb(131, 27, 2) !important;
+    border-color: rgb(150, 0, 0) !important;
 }
 
 .border-pink {
@@ -15,7 +15,7 @@
 }
 
 .border-orchid {
-    border-color: orchid !important;
+    border-color: rgb(86, 1, 112) !important;
 }
 
 .border-purple {
@@ -23,7 +23,7 @@
 }
 
 .border-lightblue {
-    border-color: rgb(80, 205, 255) !important;
+    border-color: rgb(1, 104, 173) !important;
 }
 
 .border-cyan {
@@ -31,5 +31,5 @@
 }
 
 .border-green {
-    border-color: rgb(0, 150, 56) !important;
+    border-color: rgb(1, 78, 33) !important;
 }
