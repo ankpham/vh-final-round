@@ -46,7 +46,7 @@ const VLSelection = () => {
                             <Link onClick={() => newUsedQuestion(2,3)} to={"/vl-view-question/1-2/30"} className="select border-lightblue">30</Link>
                         </div>
                         <div className='column'>
-                            <span className="select background-yellow border-yellow">Món Ăn</span>
+                            <span className="select background-orange border-orange">Món Ăn</span>
                             <Link onClick={() => newUsedQuestion(3,1)} to={"/vl-view-question/1-3/10"} className="select border-orange">10</Link>
                             <Link onClick={() => newUsedQuestion(3,2)} to={"/vl-view-question/1-3/20"} className="select border-orange">20</Link>
                             <Link onClick={() => newUsedQuestion(3,3)} to={"/vl-view-question/1-3/30"} className="select border-orange">30</Link>
