@@ -79,6 +79,11 @@
     text-shadow: black 0px 0px 4px;
     height: 70%;
 }
+@media only screen and (min-width: 1300px) {
+    .selection .selection-container-category-points .category .column .select:first-child {
+        height: 16%;
+    }
+}
 
 .selection .selection-container-category-points .category .column .select:first-child:hover {
     border-width: 3px;
