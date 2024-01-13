@@ -107,7 +107,7 @@ const ViewQuestion = () => {
         setdisplayC(arr[2]);
     }
 
-    let url = 'http://vh.backend.hvmatl.org:8080/get/questions/12/no-random/round/2/category/2';
+    let url = 'http://vhbackend.hvmatl.org:8080/get/questions/12/no-random/round/2/category/2';
 
     useEffect(()=> {
         if (currentQuestion === 0) {

@@ -74,7 +74,7 @@ const VLViewQuestion = () => {
         wrongContainer2.current.classList.add(selectionMapping.get(colorCategory))
         setLetterIcon(selectionMappingBackground.get(colorCategory))
 
-        axios.get('http://vh.backend.hvmatl.org:8080/get/question/round/2/category/' + category + 
+        axios.get('http://vhbackend.hvmatl.org:8080/get/question/round/2/category/' + category + 
         '/grade/vl/points/' + points, {auth: { username: user, password: pass}}
         ).then((response) => {
             console.log(response.data.id)

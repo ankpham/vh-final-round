@@ -15,7 +15,7 @@ const ViewOERQuestion = (props) => {
     const pass = "0842-0983-ibjw-2q9w";
 
     useEffect(()=>{
-        axios.get('http://vh.backend.hvmatl.org:8080/get/question/round/2/category/' + category, {auth: { username: user, password: pass}}
+        axios.get('http://vhbackend.hvmatl.org:8080/get/question/round/2/category/' + category, {auth: { username: user, password: pass}}
         ).then((response) => {
             setQuestion(response.data.question);
         })
