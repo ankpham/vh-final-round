@@ -12,7 +12,6 @@ const R1Selection = () => {
         
         for (let i = 0;i<data.length;i++) {
             for (let a = 0;a<data[i].length;a++) {
-                console.log('bob' + data[i][a])
                 categoryElement.current.childNodes[i].firstElementChild.childNodes[data[i][a]].classList.add('selection-used');
             }
         }
@@ -21,8 +20,6 @@ const R1Selection = () => {
     //adds used questions
     function newUsedQuestion(category, points) {
         usedQuestions.r1[category-1].push(points);
-        console.log(usedQuestions.r1[category-1]);
-        console.log(usedQuestions);
     }
 
     return (

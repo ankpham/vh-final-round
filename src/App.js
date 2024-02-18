@@ -10,6 +10,8 @@ import R1Home from './pages/R1Home';
 import R2Home from './pages/R2Home';
 import R3Home from './pages/R3Home';
 import R1Selection from './pages/R1Selection';
+import R2Selection from './pages/R2Selection';
+import R3Selection from './pages/R3Selection';
 import ViewQuestion from './pages/ViewQuestion';
 
 function App() {
@@ -38,6 +40,8 @@ function App() {
         <Route path="/r2-home" element={<R2Home/>} exact/>
         <Route path="/r3-home" element={<R3Home/>} exact/>
         <Route path="/r1-selection" element={<R1Selection/>} exact/>
+        <Route path="/r2-selection" element={<R2Selection/>} exact/>
+        <Route path="/r3-selection" element={<R3Selection/>} exact/>
       </Routes>
     </Router>
     {/*remove overflow hidden to add scrollbar and access full screen button*/}
