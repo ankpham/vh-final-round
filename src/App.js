@@ -5,13 +5,12 @@ from 'react-router-dom';
 import './style/style.css'
 
 import Home from './pages/Home';
-import VLSelection from './pages/VLSelection';
-import VLViewQuestion from './pages/VLViewQuestion';
 import RoundSelection from './pages/RoundSelection';
-import ViewQuestion from './pages/ViewQuestion';
-import ViewOERQuestion from './pages/ViewOERQuestion';
+import R1Home from './pages/R1Home';
 import R2Home from './pages/R2Home';
 import R3Home from './pages/R3Home';
+import R1Selection from './pages/R1Selection';
+import ViewQuestion from './pages/ViewQuestion';
 
 function App() {
   const page = useRef(null);
@@ -33,14 +32,12 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home/>} exact/>
+        <Route path="/selection" element={<RoundSelection/>} exact/>
+        <Route path="/view-question/:category/:subcategory/:points" element={<ViewQuestion/>} exact/>
+        <Route path="/r1-home" element={<R1Home/>} exact/>
         <Route path="/r2-home" element={<R2Home/>} exact/>
         <Route path="/r3-home" element={<R3Home/>} exact/>
-        <Route path="/selection" element={<RoundSelection/>} exact/>
-        <Route path="/selection" element={<RoundSelection/>} exact/>
-        <Route path="/vl-selection" element={<VLSelection/>} exact/>
-        <Route path="/vl-view-question/:category/:points" element={<VLViewQuestion/>} exact/>
-        <Route path="/view-question/:category" element={<ViewQuestion/>} exact/>
-        <Route path="/view-oer-question/:category" element={<ViewOERQuestion/>} exact/>
+        <Route path="/r1-selection" element={<R1Selection/>} exact/>
       </Routes>
     </Router>
     {/*remove overflow hidden to add scrollbar and access full screen button*/}

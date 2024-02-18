@@ -6,9 +6,9 @@ const RoundSelection = () => {
         <div className='round-selection'>
             <div className='container'>
                 <div className='select-round'>
-                    <Link className="link" to="/vl-selection">Vòng I</Link>
-                    <Link className="link" to="/r2-home">Vòng II</Link>
-                    {/*<Link className="link" to="/r3-home">Vòng III</Link>*/}
+                    <Link className="link" to="/r1-home">Chung Kết I</Link>
+                    <Link className="link" to="/r2-home">Chung Kết II</Link>
+                    <Link className="link" to="/r3-home">Chung Kết II</Link>
                 </div>
             </div>
         </div>
