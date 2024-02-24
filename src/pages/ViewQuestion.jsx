@@ -34,7 +34,7 @@ const ViewQuestion = () => {
     const [choice3, setChoice3] = useState('no choice');
     const [questionElementStyle, setquestionElementStyle] = useState({display: 'none'});
 
-    const { category, subcategory, points } = useParams();
+    const { category, subcategory, points, seconds } = useParams();
 
     let selectionMapping = useMemo(() => 
         new Map([
@@ -184,7 +184,7 @@ const ViewQuestion = () => {
                     <h5>{points} Points</h5>
                 </div>
                 <div ref={timerElementMC} className='timer'>
-                    <Timer/>
+                    <Timer seconds={seconds}/>
                 </div>
                 <h1 ref={questionElement} className='question-heading'>{question} <b style={{color: 'yellow'}} className='question-heading'>(10 Điểm)</b></h1>
             </div>
@@ -211,12 +211,14 @@ const ViewQuestion = () => {
                 <h5>{points} Points</h5>
             </div>
             <div ref={timerElementOER} className='timer'>
-                <Timer/>
+                <Timer seconds={seconds}/>
             </div>
-            <h1 ref={questionElement} className='question-heading'>{question} <b style={{color: 'yellow'}} className='question-heading'>{'(' + points + ' Điểm)'}</b></h1>
+            <h1 ref={questionElement} className='question-heading'>{question}</h1>
             <h1 onClick={() => {
                 setOpenEndedAnswerDisplayStyle("block")
                 setOpenEndedAnswerButtonDisplayStyle("none")
+                timerElementMC.current.remove();
+                timerElementOER.current.remove();
             }} style={{display: openEndedAnswerButtonDisplayStyle,color: 'green', cursor: 'pointer', border: '1px solid green', padding: '5px', marginTop: "15vh"}} className='question-heading'>Câu Trả Lời Đúng</h1>
             <h1 style={{display: openEndedAnswerDisplayStyle}} className='question-heading oer-answer'>{newLine(oerAnswer)}</h1>
         </div>

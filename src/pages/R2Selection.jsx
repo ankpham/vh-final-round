@@ -1,4 +1,4 @@
-import React, {useRef, useEffect, useState} from 'react';
+import React, {useRef, useEffect} from 'react';
 import usedQuestions from '../database/used-questions.json';
 import {Link} from 'react-router-dom';
 
@@ -35,20 +35,20 @@ const R1Selection = () => {
                                 <div className='select-heading-container select background-red border-red'>
                                     <span>Lượt Đi</span>
                                 </div>
-                                <Link onClick={() => newUsedQuestion(1,1)} to={"/view-question/2/1/1"} className="select border-red">1</Link>
-                                <Link onClick={() => newUsedQuestion(1,2)} to={"/view-question/2/1/2"} className="select border-red">2</Link>
-                                <Link onClick={() => newUsedQuestion(1,3)} to={"/view-question/2/1/3"} className="select border-red">3</Link>
-                                <Link onClick={() => newUsedQuestion(1,4)} to={"/view-question/2/1/4"} className="select border-red">4</Link>
-                                <Link onClick={() => newUsedQuestion(1,5)} to={"/view-question/2/1/5"} className="select border-red">5</Link>
-                                <Link onClick={() => newUsedQuestion(1,6)} to={"/view-question/2/1/6"} className="select border-red">6</Link>
+                                <Link onClick={() => newUsedQuestion(1,1)} to={"/view-question/2/1/1/15"} className="select border-red">1</Link>
+                                <Link onClick={() => newUsedQuestion(1,2)} to={"/view-question/2/1/2/15"} className="select border-red">2</Link>
+                                <Link onClick={() => newUsedQuestion(1,3)} to={"/view-question/2/1/3/15"} className="select border-red">3</Link>
+                                <Link onClick={() => newUsedQuestion(1,4)} to={"/view-question/2/1/4/15"} className="select border-red">4</Link>
+                                <Link onClick={() => newUsedQuestion(1,5)} to={"/view-question/2/1/5/15"} className="select border-red">5</Link>
+                                <Link onClick={() => newUsedQuestion(1,6)} to={"/view-question/2/1/6/15"} className="select border-red">6</Link>
                             </div>
                         </div>
                         <div className="column-container">
                             <div className='column'>
                                 <div>
                                 </div>
-                                <Link onClick={() => newUsedQuestion(2,1)} to={"/view-question/2/3/1"} className="select select-bottom border-lightblue">Câu Đồng Đội</Link>
-                                <Link onClick={() => newUsedQuestion(2,2)} to={"/view-question/2/3/2"} className="select select-bottom border-lightblue">Câu Dự Bị</Link>
+                                <Link onClick={() => newUsedQuestion(2,1)} to={"/view-question/2/3/1/15"} className="select select-bottom border-lightblue">Câu Đồng Đội</Link>
+                                <Link onClick={() => newUsedQuestion(2,2)} to={"/view-question/2/3/2/15"} className="select select-bottom border-lightblue">Câu Dự Bị</Link>
                             </div>
                         </div>
                         <div className="column-container">
@@ -56,12 +56,12 @@ const R1Selection = () => {
                                 <div className='select-heading-container select background-yellow border-yellow'>
                                     <span>Lượt Về</span>
                                 </div>
-                                <Link onClick={() => newUsedQuestion(3,1)} to={"/view-question/2/2/1"} className="select border-yellow">1</Link>
-                                <Link onClick={() => newUsedQuestion(3,2)} to={"/view-question/2/2/2"} className="select border-yellow">2</Link>
-                                <Link onClick={() => newUsedQuestion(3,3)} to={"/view-question/2/2/3"} className="select border-yellow">3</Link>
-                                <Link onClick={() => newUsedQuestion(3,4)} to={"/view-question/2/2/4"} className="select border-yellow">4</Link>
-                                <Link onClick={() => newUsedQuestion(3,5)} to={"/view-question/2/2/5"} className="select border-yellow">5</Link>
-                                <Link onClick={() => newUsedQuestion(3,6)} to={"/view-question/2/2/6"} className="select border-yellow">6</Link>
+                                <Link onClick={() => newUsedQuestion(3,1)} to={"/view-question/2/2/1/15"} className="select border-yellow">1</Link>
+                                <Link onClick={() => newUsedQuestion(3,2)} to={"/view-question/2/2/2/15"} className="select border-yellow">2</Link>
+                                <Link onClick={() => newUsedQuestion(3,3)} to={"/view-question/2/2/3/15"} className="select border-yellow">3</Link>
+                                <Link onClick={() => newUsedQuestion(3,4)} to={"/view-question/2/2/4/15"} className="select border-yellow">4</Link>
+                                <Link onClick={() => newUsedQuestion(3,5)} to={"/view-question/2/2/5/15"} className="select border-yellow">5</Link>
+                                <Link onClick={() => newUsedQuestion(3,6)} to={"/view-question/2/2/6/15"} className="select border-yellow">6</Link>
                             </div>
                         </div>
                     </div>

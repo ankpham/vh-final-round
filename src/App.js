@@ -35,7 +35,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>} exact/>
         <Route path="/selection" element={<RoundSelection/>} exact/>
-        <Route path="/view-question/:category/:subcategory/:points" element={<ViewQuestion/>} exact/>
+        <Route path="/view-question/:category/:subcategory/:points/:seconds" element={<ViewQuestion/>} exact/>
         <Route path="/r1-home" element={<R1Home/>} exact/>
         <Route path="/r2-home" element={<R2Home/>} exact/>
         <Route path="/r3-home" element={<R3Home/>} exact/>
