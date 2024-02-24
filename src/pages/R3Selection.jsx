@@ -44,7 +44,9 @@ const R1Selection = () => {
                             <div className='column'>
                                 <div>
                                 </div>
-                                <Link onClick={() => newUsedQuestion(2,1)} to={"/view-question/3/3/1/60"} className="select select-bottom border-lightblue">Câu Dự Bị</Link>
+                                <Link onClick={() => newUsedQuestion(2,1)} to={"/view-question/3/3/1/60"} className="select select-bottom border-lightblue">Câu Đồng Đội</Link>
+                                <Link onClick={() => newUsedQuestion(2,1)} to={"/view-question/3/3/2/60"} className="select select-bottom border-lightblue">Câu Dự Bị</Link>
+
                             </div>
                         </div>
                         <div className="column-container">
