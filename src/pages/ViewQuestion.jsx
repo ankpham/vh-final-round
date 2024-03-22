@@ -53,15 +53,15 @@ const ViewQuestion = () => {
     //Confetti Effect
     const setConfetti = () => {
         party.confetti(questionContainer.current, {
-            count: party.variation.range(50, 100),
+            count: party.variation.range(40, 50),
             size: party.variation.range(2, 2.5),
             spread: party.variation.range(80, 130)
         });
-        party.sparkles(questionContainer.current, {
-            count: party.variation.range(50, 100),
+        /*party.sparkles(questionContainer.current, {
+            count: party.variation.range(20, 25),
             size: party.variation.range(2, 2.5),
             spread: party.variation.range(80, 130)
-        });
+        });*/
     }
 
     const displayIcon = (questionLocation) => {
