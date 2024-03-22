@@ -22,7 +22,7 @@
 }
 
 .question-heading {
-    font-size: 40px;
+    font-size: 55px;
     font-weight: 400;
     text-align: center;
     padding-top: 6vh;
@@ -84,7 +84,7 @@
 .question .choices .choice-container div p.question-text {
     display: inline-block;
     width: 70%;
-    font-size: 30px;
+    font-size: 50px;
     user-select: none;
     margin-top: 1vh;
     cursor: pointer;
@@ -107,6 +107,7 @@
     margin: 2%;
     border-radius: 10px;
     cursor: pointer;
+    color: white;
 }
 
 .timer p {
