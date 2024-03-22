@@ -84,7 +84,7 @@
 .question .choices .choice-container div p.question-text {
     display: inline-block;
     width: 70%;
-    font-size: 50px;
+    font-size: 60px;
     user-select: none;
     margin-top: 1vh;
     cursor: pointer;
