@@ -42,7 +42,7 @@
 }
 
 .question .question-row {
-    height: 38%;
+    height: 45%;
 }
 
 .question .choices {
@@ -51,7 +51,7 @@
     padding: 0;
     margin-left: auto;
     margin-right: auto;
-    padding-bottom: 4%;
+    padding-bottom: 2.5%;
 }
 
 .question .choices .choice-container {
