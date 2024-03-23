@@ -1,40 +1,33 @@
 import axios from 'axios';
 import React, {useMemo, useState, useEffect, useRef} from 'react';
 import party from 'party-js';
-import Timer from './Timer';
-import {TbLetterA, TbLetterB, TbLetterC} from 'react-icons/tb';
 import {BsCheckLg, BsXLg} from 'react-icons/bs';
 import { useParams, Link } from "react-router-dom";
 import { PlayAudio } from '../components/PlayAudio';
 import { RandomizeChoices } from '../components/RandomizeChoices';
 import { SetChoiceAtBottom } from '../components/SetChoiceAtBottom';
 
-const ViewQuestion = () => {
+const ViewOER = () => {
     const timerElementMC = useRef(null);
     const timerElementOER = useRef(null);
     const questionContainer = useRef(null);
-    const questionElement = useRef(null);
     const correctElement = useRef(null);
     const wrongElement1 = useRef(null);
     const wrongElement2 = useRef(null);
     const correctContainer = useRef(null);
     const wrongContainer1 = useRef(null);
     const wrongContainer2 = useRef(null);
-    const [multipleChoiceDisplayStyle, setMultipleChoiceDisplayStyle]= useState("none");
-    const [multipleChoiceAnswersDisplayStyle, setMultipleChoiceAnswersDisplayStyle] = useState("none");
     const [openEndedDisplayStyle, setOpenEndedDisplayStyle] = useState(null);
     const [openEndedAnswerDisplayStyle, setOpenEndedAnswerDisplayStyle] = useState("none")
     const [openEndedAnswerButtonDisplayStyle, setOpenEndedAnswerButtonDisplayStyle] = useState(null);
-    const [letterIcon, setLetterIcon] = useState('');
 
-    const [question, setQuestion] = useState('no question');
     const [oerAnswer, setOerAnswer] = useState('no answer');
     const [choice1, setChoice1] = useState('no choice');
     const [choice2, setChoice2] = useState('no choice');
     const [choice3, setChoice3] = useState('no choice');
     const [questionElementStyle, setquestionElementStyle] = useState({display: 'none'});
 
-    const { category, subcategory, points, seconds } = useParams();
+    const { category, subcategory, points } = useParams();
 
     let selectionMapping = useMemo(() => 
         new Map([
@@ -42,14 +35,6 @@ const ViewQuestion = () => {
             ["4", "border-red"], ["5", "border-green"]
         ])
     , [])
-
-    let selectionMappingBackground = useMemo(() => 
-        new Map([
-            ["1", "background-orchid"], ["2", "background-lightblue"], ["3", "background-yellow"], 
-            ["4", "background-red"], ["5", "background-green"]
-        ])
-    , [])
-
     //Confetti Effect
     const setConfetti = () => {
         party.confetti(questionContainer.current, {
@@ -89,7 +74,7 @@ const ViewQuestion = () => {
 
         for (let i = 0;i < newArr.length;i++) {
             arrOfObjects.push({
-               data: newArr[i] 
+                data: newArr[i] 
             })
         }
 
@@ -110,7 +95,6 @@ const ViewQuestion = () => {
         correctContainer.current.classList.add(selectionMapping.get(category))
         wrongContainer1.current.classList.add(selectionMapping.get(category))
         wrongContainer2.current.classList.add(selectionMapping.get(category))
-        setLetterIcon(selectionMappingBackground.get(category))
         
         axios.get('http://vhbackend.hvmatl.org:8080/get/question/round/2/category/' + category + "-" + subcategory +
         '/grade/0/points/' + points, {auth: { username: user, password: pass}}
@@ -118,18 +102,13 @@ const ViewQuestion = () => {
             if (response.data.type + "" === "oer") {
                 setOpenEndedDisplayStyle("block")
                 setOpenEndedAnswerButtonDisplayStyle("block")
-                setMultipleChoiceDisplayStyle("none")
-                setMultipleChoiceAnswersDisplayStyle("none")
                 setOerAnswer(response.data.correctChoice)
             }
             else {
                 setOpenEndedDisplayStyle("none")
                 setOpenEndedAnswerButtonDisplayStyle("none")
-                setMultipleChoiceDisplayStyle("block")
-                setMultipleChoiceAnswersDisplayStyle("block")
             }
 
-            setQuestion(response.data.question);
             let arr = [response.data.correctChoice,response.data.otherChoices[0],response.data.otherChoices[1]]
 
             setChoice1(arr[0]);
@@ -157,51 +136,7 @@ const ViewQuestion = () => {
             displayIcon('wrong2')
         }} className='border-yellow'><p ref={wrongElement2} className="question-text">{choice3}</p><BsXLg className='inactive-x'/></div>
     )
-
-    let arr = RandomizeChoices(correctChoice,otherChoice1,otherChoice2);
     
-    //For questions with this answer choice
-    if (choice1.trim() === "Cả hai câu đều đúng." || choice1.trim() === "Không có câu đúng" || choice1.trim() === "Không có câu trả lời đúng" || choice1.trim() === "Cả hai câu a và b đều đúng.") {
-        arr = SetChoiceAtBottom(arr, correctChoice);
-    }
-    else if (choice2.trim() === "Cả hai câu đều đúng." || choice2.trim() === "Không có câu đúng" || choice2.trim() === "Không có câu trả lời đúng" || choice2.trim() === "Cả hai câu a và b đều đúng.") {
-        arr = SetChoiceAtBottom(arr, otherChoice1);
-    }
-    else if (choice3.trim() === "Cả hai câu đều đúng." || choice3.trim() === "Không có câu đúng" || choice3.trim() === "Không có câu trả lời đúng" || choice3.trim() === "Cả hai câu a và b đều đúng.") {
-        arr = SetChoiceAtBottom(arr, otherChoice2);
-    }
-    
-    const displayA = arr[0];
-    const displayB = arr[1];
-    const displayC = arr[2];
-
-    const multipleChoice = (
-            <>
-            <div style={{display: multipleChoiceDisplayStyle}} className='question-row'>
-                <div hidden>
-                    <h5>Category {category}</h5>
-                    <h5>Subcategory {subcategory}</h5>
-                    <h5>{points} Points</h5>
-                </div>
-                <div ref={timerElementMC} className='timer'>
-                    <Timer seconds={seconds}/>
-                </div>
-                <h1 ref={questionElement} className='question-heading'>{question} <b style={{color: 'yellow'}} className='question-heading'>(10 Điểm)</b></h1>
-            </div>
-            <div style={{display: multipleChoiceAnswersDisplayStyle}} className="choices">
-                <div className='choice-container'>
-                    <TbLetterA className={'letter-icon ' + letterIcon}/>{displayA}
-                </div>
-                <div className='choice-container'>
-                    <TbLetterB className={'letter-icon ' + letterIcon}/>{displayB}
-                </div>
-                <div className='choice-container'>
-                    <TbLetterC className={'letter-icon ' + letterIcon}/>{displayC}
-                </div>
-            </div>
-            </>
-    )
-
     const openEnded = (
         <>
         <div style={{display: openEndedDisplayStyle}} className='question-row'>
@@ -210,11 +145,12 @@ const ViewQuestion = () => {
                 <h5>Category {category}</h5>
                 <h5>{points} Points</h5>
             </div>
-            <div ref={timerElementOER} className='timer'>
-                <Timer seconds={seconds}/>
-            </div>
-            <h1 ref={questionElement} className='question-heading'>{question}</h1>
-            <Link to={"/view-oer-question/" + category + "/" + subcategory + "/" + points} style={{display: openEndedAnswerButtonDisplayStyle,color: 'green', cursor: 'pointer', border: '1px solid green', padding: '5px', marginTop: "15vh"}} className='question-heading'>Câu Trả Lời Đúng</Link>
+            <h1 onClick={() => {
+                setOpenEndedAnswerDisplayStyle("block")
+                setOpenEndedAnswerButtonDisplayStyle("none")
+                timerElementMC.current.remove();
+                timerElementOER.current.remove();
+            }} style={{display: openEndedAnswerButtonDisplayStyle,color: 'green', cursor: 'pointer', border: '1px solid green', padding: '5px', marginTop: "15vh"}} className='question-heading'>Câu Trả Lời Đúng</h1>
             <h1 style={{display: openEndedAnswerDisplayStyle}} className='question-heading oer-answer'>{newLine(oerAnswer)}</h1>
         </div>
         </>
@@ -225,7 +161,6 @@ const ViewQuestion = () => {
         <div className='view-question'> 
             <div id="container" className='container'>
                 <div ref={questionContainer} style={questionElementStyle} className='question'>
-                    {multipleChoice}
                     {openEnded}
                 </div>
                 <Link className="link back-to-selection" to={"/r" + category + "-selection/"}>Trở Về Trang Đầu</Link> 
@@ -235,4 +170,4 @@ const ViewQuestion = () => {
     )
 }
 
-export default ViewQuestion;
+export default ViewOER

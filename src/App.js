@@ -13,6 +13,7 @@ import R1Selection from './pages/R1Selection';
 import R2Selection from './pages/R2Selection';
 import R3Selection from './pages/R3Selection';
 import ViewQuestion from './pages/ViewQuestion';
+import ViewOer from './pages/ViewOer';
 
 function App() {
   const page = useRef(null);
@@ -36,6 +37,7 @@ function App() {
         <Route path="/" element={<Home/>} exact/>
         <Route path="/selection" element={<RoundSelection/>} exact/>
         <Route path="/view-question/:category/:subcategory/:points/:seconds" element={<ViewQuestion/>} exact/>
+        <Route path="/view-oer-question/:category/:subcategory/:points/" element={<ViewOer/>} exact/>
         <Route path="/r1-home" element={<R1Home/>} exact/>
         <Route path="/r2-home" element={<R2Home/>} exact/>
         <Route path="/r3-home" element={<R3Home/>} exact/>
