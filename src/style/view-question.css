@@ -116,9 +116,9 @@
     float: right;
     position: absolute;
     font-size: 70px;
-    padding-top: 2vw;
-    padding-bottom: 2vw;
-    width: 5vw;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+    width: 6vw;
     right: 5vw;
     border-radius: 1500px;
     cursor: pointer;
