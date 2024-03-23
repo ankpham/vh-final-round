@@ -85,7 +85,7 @@ const ViewQuestion = () => {
         wrongContainer2.current.classList.add(selectionMapping.get(category))
         setLetterIcon(selectionMappingBackground.get(category))
         
-        axios.get('http://vhbackend.hvmatl.org:8080/get/question/round/2/category/' + category + "-" + subcategory +
+        axios.get('http://34.195.46.53:8080/get/question/round/2/category/' + category + "-" + subcategory +
         '/grade/0/points/' + points, {auth: { username: user, password: pass}}
         ).then((response) => {
             if (response.data.type + "" === "oer") {
