@@ -23,12 +23,10 @@ const ViewQuestion = () => {
     const [multipleChoiceDisplayStyle, setMultipleChoiceDisplayStyle]= useState("none");
     const [multipleChoiceAnswersDisplayStyle, setMultipleChoiceAnswersDisplayStyle] = useState("none");
     const [openEndedDisplayStyle, setOpenEndedDisplayStyle] = useState(null);
-    const [openEndedAnswerDisplayStyle, setOpenEndedAnswerDisplayStyle] = useState("none")
     const [openEndedAnswerButtonDisplayStyle, setOpenEndedAnswerButtonDisplayStyle] = useState(null);
     const [letterIcon, setLetterIcon] = useState('');
 
     const [question, setQuestion] = useState('no question');
-    const [oerAnswer, setOerAnswer] = useState('no answer');
     const [choice1, setChoice1] = useState('no choice');
     const [choice2, setChoice2] = useState('no choice');
     const [choice3, setChoice3] = useState('no choice');
@@ -80,31 +78,6 @@ const ViewQuestion = () => {
 
     const user = "089e-weni-098w";
     const pass = "0842-0983-ibjw-2q9w";
-    
-    //New line for oer snswers
-    const newLine = (str) => {
-        let newArr = str.split("*newline*");
-
-        let arrOfObjects = [];
-
-        for (let i = 0;i < newArr.length;i++) {
-            arrOfObjects.push({
-               data: newArr[i] 
-            })
-        }
-
-        let answer = (
-            <>
-            {arrOfObjects.map((item) => (
-                <div>
-                    {item.data}<br></br>
-                </div>
-            ))}
-            </>
-        )
-
-        return answer;
-    }
 
     useEffect(()=>{
         correctContainer.current.classList.add(selectionMapping.get(category))
@@ -120,7 +93,6 @@ const ViewQuestion = () => {
                 setOpenEndedAnswerButtonDisplayStyle("block")
                 setMultipleChoiceDisplayStyle("none")
                 setMultipleChoiceAnswersDisplayStyle("none")
-                setOerAnswer(response.data.correctChoice)
             }
             else {
                 setOpenEndedDisplayStyle("none")
@@ -215,7 +187,6 @@ const ViewQuestion = () => {
             </div>
             <h1 ref={questionElement} className='question-heading'>{question}</h1>
             <Link to={"/view-oer-question/" + category + "/" + subcategory + "/" + points} style={{display: openEndedAnswerButtonDisplayStyle,color: 'green', cursor: 'pointer', border: '1px solid green', padding: '5px', marginTop: "15vh"}} className='question-heading'>Câu Trả Lời Đúng</Link>
-            <h1 style={{display: openEndedAnswerDisplayStyle}} className='question-heading oer-answer'>{newLine(oerAnswer)}</h1>
         </div>
         </>
     )
