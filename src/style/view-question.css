@@ -5,7 +5,7 @@
 }
 
 .view-question .container {
-    background: url('../assets/background-plain-1920-1080.jpg');
+    background-image: url("../assets/Inside page-01.png");
     background-size: contain;
 }
 
