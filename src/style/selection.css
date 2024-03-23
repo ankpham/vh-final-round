@@ -22,7 +22,7 @@
     padding-left: 3%;
     padding-right: 3%;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-    font-size: 200px;
+    font-size: 70px;
     width: 40%;
     box-shadow: 2px 2px 7px 1px gray;
 }
@@ -111,6 +111,7 @@
     height: 122%;
     text-align: center;
     color: white;
+    font-size: 30px
 }
 
 .selection .selection-container-category-points .category .column-container .column .select {
