@@ -49,20 +49,6 @@ const ViewOER = () => {
         });*/
     }
 
-    const displayIcon = (questionLocation) => {
-        if (questionLocation === 'correct') {
-            correctContainer.current.childNodes[1].classList.add('active-x-check')
-            timerElementMC.current.remove();
-            timerElementOER.current.remove();
-        }
-        else if (questionLocation === 'wrong1') {
-            wrongContainer1.current.childNodes[1].classList.add('active-x-check');
-        }
-        else if (questionLocation === 'wrong2') {
-            wrongContainer2.current.childNodes[1].classList.add('active-x-check');
-        }
-    }
-
     const user = "089e-weni-098w";
     const pass = "0842-0983-ibjw-2q9w";
     
@@ -117,26 +103,7 @@ const ViewOER = () => {
             setquestionElementStyle({})
         })
     }, [category, points, subcategory]);
-    
-    const correctChoice = (
-        <div ref={correctContainer} onClickCapture={() => PlayAudio('ding')} onClick={() => {
-            setConfetti(true)
-            displayIcon('correct')
-        }} className='border-yellow'><p ref={correctElement} className="question-text">{choice1}</p><BsCheckLg className="inactive-check"/></div>
-    )
 
-    const otherChoice1 = (
-        <div ref={wrongContainer1} onClickCapture={() => PlayAudio("buzzer")} onClick={() => {
-            displayIcon('wrong1')
-        }} className='border-yellow'><p ref={wrongElement1} className="question-text">{choice2}</p><BsXLg className='inactive-x'/></div>
-    )
-
-    const otherChoice2 = (
-        <div ref={wrongContainer2} onClickCapture={() => PlayAudio('buzzer')} onClick={() => {
-            displayIcon('wrong2')
-        }} className='border-yellow'><p ref={wrongElement2} className="question-text">{choice3}</p><BsXLg className='inactive-x'/></div>
-    )
-    
     const openEnded = (
         <>
         <div style={{display: openEndedDisplayStyle}} className='question-row'>
@@ -145,13 +112,7 @@ const ViewOER = () => {
                 <h5>Category {category}</h5>
                 <h5>{points} Points</h5>
             </div>
-            <h1 onClick={() => {
-                setOpenEndedAnswerDisplayStyle("block")
-                setOpenEndedAnswerButtonDisplayStyle("none")
-                timerElementMC.current.remove();
-                timerElementOER.current.remove();
-            }} style={{display: openEndedAnswerButtonDisplayStyle,color: 'green', cursor: 'pointer', border: '1px solid green', padding: '5px', marginTop: "15vh"}} className='question-heading'>Câu Trả Lời Đúng</h1>
-            <h1 style={{display: openEndedAnswerDisplayStyle}} className='question-heading oer-answer'>{newLine(oerAnswer)}</h1>
+            <h1 style={{display: "block"}} className='question-heading oer-answer'>{newLine(oerAnswer)}</h1>
         </div>
         </>
     )
