@@ -78,9 +78,6 @@ const ViewOER = () => {
     }
 
     useEffect(()=>{
-        correctContainer.current.classList.add(selectionMapping.get(category))
-        wrongContainer1.current.classList.add(selectionMapping.get(category))
-        wrongContainer2.current.classList.add(selectionMapping.get(category))
         
         axios.get('http://vhbackend.hvmatl.org:8080/get/question/round/2/category/' + category + "-" + subcategory +
         '/grade/0/points/' + points, {auth: { username: user, password: pass}}
