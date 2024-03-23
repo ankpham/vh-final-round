@@ -114,6 +114,10 @@
     font-size: 30px
 }
 
+.selection .selection-container-category-points .category .column-container .column .select-heading-container .select {
+    font-size: 80px
+}
+
 .selection .selection-container-category-points .category .column-container .column .select {
     width: 100%;
     font-size: 23px;
