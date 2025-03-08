@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, {useMemo, useState, useEffect, useRef} from 'react';
 import party from 'party-js';
 import Timer from './Timer';
-import {TbLetterA, TbLetterB, TbLetterC} from 'react-icons/tb';
+import {TbLetterA, TbLetterB, TbLetterC, TbLetterD} from 'react-icons/tb';
 import {BsCheckLg, BsXLg} from 'react-icons/bs';
 import { useParams, Link } from "react-router-dom";
 import { PlayAudio } from '../components/PlayAudio';
@@ -17,9 +17,11 @@ const ViewQuestion = () => {
     const correctElement = useRef(null);
     const wrongElement1 = useRef(null);
     const wrongElement2 = useRef(null);
+    const wrongElement3 = useRef(null);
     const correctContainer = useRef(null);
     const wrongContainer1 = useRef(null);
     const wrongContainer2 = useRef(null);
+    const wrongContainer3 = useRef(null);
     const [multipleChoiceDisplayStyle, setMultipleChoiceDisplayStyle]= useState("none");
     const [multipleChoiceAnswersDisplayStyle, setMultipleChoiceAnswersDisplayStyle] = useState("none");
     const [openEndedDisplayStyle, setOpenEndedDisplayStyle] = useState(null);
@@ -30,6 +32,7 @@ const ViewQuestion = () => {
     const [choice1, setChoice1] = useState('no choice');
     const [choice2, setChoice2] = useState('no choice');
     const [choice3, setChoice3] = useState('no choice');
+    const [choice4, setChoice4] = useState('no choice');
     const [questionElementStyle, setquestionElementStyle] = useState({display: 'none'});
 
     const { category, subcategory, points, seconds } = useParams();
@@ -74,6 +77,9 @@ const ViewQuestion = () => {
         else if (questionLocation === 'wrong2') {
             wrongContainer2.current.childNodes[1].classList.add('active-x-check');
         }
+        else if (questionLocation === 'wrong3') {
+            wrongContainer3.current.childNodes[1].classList.add('active-x-check');
+        }
     }
 
     const user = "089e-weni-098w";
@@ -83,9 +89,10 @@ const ViewQuestion = () => {
         correctContainer.current.classList.add(selectionMapping.get(category))
         wrongContainer1.current.classList.add(selectionMapping.get(category))
         wrongContainer2.current.classList.add(selectionMapping.get(category))
+        wrongContainer3.current.classList.add(selectionMapping.get(category))
         setLetterIcon(selectionMappingBackground.get(category))
         
-        axios.get('http://vhbackend.hvmatl.org:8080/get/question/round/2/category/' + category + "-" + subcategory +
+        axios.get('http://localhost:8080/get/question/round/2/category/' + category + "-" + subcategory +
         '/grade/0/points/' + points, {auth: { username: user, password: pass}}
         ).then((response) => {
             if (response.data.type + "" === "oer") {
@@ -102,11 +109,12 @@ const ViewQuestion = () => {
             }
 
             setQuestion(response.data.question);
-            let arr = [response.data.correctChoice,response.data.otherChoices[0],response.data.otherChoices[1]]
+            let arr = [response.data.correctChoice,response.data.otherChoices[0],response.data.otherChoices[1],response.data.otherChoices[2]]
 
             setChoice1(arr[0]);
             setChoice2(arr[1]);
             setChoice3(arr[2]);
+            setChoice4(arr[3]);
             setquestionElementStyle({})
         })
     }, [category, points, subcategory]);
@@ -130,7 +138,13 @@ const ViewQuestion = () => {
         }} className='border-yellow'><p ref={wrongElement2} className="question-text">{choice3}</p><BsXLg className='inactive-x'/></div>
     )
 
-    let arr = RandomizeChoices(correctChoice,otherChoice1,otherChoice2);
+    const otherChoice3 = (
+        <div ref={wrongContainer3} onClickCapture={() => PlayAudio('buzzer')} onClick={() => {
+            displayIcon('wrong3')
+        }} className='border-yellow'><p ref={wrongElement3} className="question-text">{choice4}</p><BsXLg className='inactive-x'/></div>
+    )
+
+    let arr = RandomizeChoices(correctChoice,otherChoice1,otherChoice2,otherChoice3);
     
     //For questions with this answer choice
     if (choice1.trim() === "Cả hai câu đều đúng." || choice1.trim() === "Không có câu đúng" || choice1.trim() === "Không có câu trả lời đúng" || choice1.trim() === "Cả hai câu a và b đều đúng.") {
@@ -142,10 +156,14 @@ const ViewQuestion = () => {
     else if (choice3.trim() === "Cả hai câu đều đúng." || choice3.trim() === "Không có câu đúng" || choice3.trim() === "Không có câu trả lời đúng" || choice3.trim() === "Cả hai câu a và b đều đúng.") {
         arr = SetChoiceAtBottom(arr, otherChoice2);
     }
+    else if (choice4.trim() === "Cả hai câu đều đúng." || choice4.trim() === "Không có câu đúng" || choice4.trim() === "Không có câu trả lời đúng" || choice4.trim() === "Cả hai câu a và b đều đúng.") {
+        arr = SetChoiceAtBottom(arr, otherChoice3);
+    }
     
     const displayA = arr[0];
     const displayB = arr[1];
     const displayC = arr[2];
+    const displayD = arr[3];
 
     const multipleChoice = (
             <>
@@ -158,7 +176,7 @@ const ViewQuestion = () => {
                 <div ref={timerElementMC} className='timer'>
                     <Timer seconds={seconds}/>
                 </div>
-                <h1 ref={questionElement} className='question-heading'>{question} <b style={{color: 'yellow'}} className='question-heading'>(10 Điểm)</b></h1>
+                <h1 ref={questionElement} className='question-heading'>{question} <b style={{color: 'yellow'}} className='question-heading'>{/*(10 Điểm)*/}</b></h1>
             </div>
             <div style={{display: multipleChoiceAnswersDisplayStyle}} className="choices">
                 <div className='choice-container'>
@@ -170,10 +188,37 @@ const ViewQuestion = () => {
                 <div className='choice-container'>
                     <TbLetterC className={'letter-icon ' + letterIcon}/>{displayC}
                 </div>
+                <div className='choice-container'>
+                    <TbLetterD className={'letter-icon ' + letterIcon}/>{displayD}
+                </div>
             </div>
             </>
     )
 
+    //New line for oer snswers
+    const newLine = (str) => {
+        let newArr = str.split("*newline*");
+
+        let arrOfObjects = [];
+
+        for (let i = 0;i < newArr.length;i++) {
+            arrOfObjects.push({
+                data: newArr[i] 
+            })
+        }
+
+        let answer = (
+            <>
+            {arrOfObjects.map((item) => (
+                <div>
+                    {item.data}<br></br>
+                </div>
+            ))}
+            </>
+        )
+
+        return answer;
+    }
     const openEnded = (
         <>
         <div style={{display: openEndedDisplayStyle}} className='question-row'>
@@ -185,7 +230,7 @@ const ViewQuestion = () => {
             <div ref={timerElementOER} className='timer'>
                 <Timer seconds={seconds}/>
             </div>
-            <h1 ref={questionElement} className='question-heading'>{question}</h1>
+            <h1 ref={questionElement} className='question-heading'>{newLine(question)}</h1>
             <Link to={"/view-oer-question/" + category + "/" + subcategory + "/" + points} style={{display: openEndedAnswerButtonDisplayStyle,color: 'green', cursor: 'pointer', border: '1px solid green', padding: '5px', marginTop: "15vh"}} className='question-heading'>Câu Trả Lời Đúng</Link>
         </div>
         </>

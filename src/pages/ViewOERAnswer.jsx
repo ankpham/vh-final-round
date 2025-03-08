@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, {useState, useEffect, useRef} from 'react';
 import { useParams, Link } from "react-router-dom";
 
-const ViewOER = () => {
+const ViewOERAnswer = () => {
     const questionContainer = useRef(null);
     const [openEndedDisplayStyle, setOpenEndedDisplayStyle] = useState(null);
 
@@ -40,7 +40,7 @@ const ViewOER = () => {
     }
 
     useEffect(()=>{
-        axios.get('http://vhbackend.hvmatl.org:8080/get/question/round/2/category/' + category + "-" + subcategory +
+        axios.get('http://localhost:8080/get/question/round/2/category/' + category + "-" + subcategory +
         '/grade/0/points/' + points, {auth: { username: user, password: pass}}
         ).then((response) => {
             if (response.data.type + "" === "oer") {
@@ -82,4 +82,4 @@ const ViewOER = () => {
     )
 }
 
-export default ViewOER
+export default ViewOERAnswer

@@ -1,6 +1,6 @@
-const RandomizeChoices = (correctChoice, otherChoice1, otherChoice2) => {
+const RandomizeChoices = (correctChoice, otherChoice1, otherChoice2, otherChoice3) => {
 
-    let arr = [correctChoice,otherChoice1,otherChoice2];
+    let arr = [correctChoice,otherChoice1,otherChoice2, otherChoice3];
 
     let i = arr.length - 1;
     for (; i > 0; i--) {
@@ -10,7 +10,7 @@ const RandomizeChoices = (correctChoice, otherChoice1, otherChoice2) => {
         arr[j] = temp;
     }
 
-    return [arr[0], arr[1], arr[2]];
+    return [arr[0], arr[1], arr[2], arr[3]];
 }
 
 export {RandomizeChoices}

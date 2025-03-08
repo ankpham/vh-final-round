@@ -86,41 +86,32 @@
 
 .selection .selection-container-category-points .category {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     padding: 25px;
     width: 88%;
-    margin-left: 1.35%;
+    margin: auto;
 }
 
-.selection .selection-container-category-points .category .column-container {
-    width: 13%;
+.selection .selection-container-category-points .category .question-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    border-width: 3px;
+    place-items: center;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
 }
 
-.selection .selection-container-category-points .category .column-container .column {
-    border-width: 3px;
-}
-
-.selection .selection-container-category-points .category .column-container .column .select-heading-container {
-    height: 6vh;
-    text-align: center;
-}
-
-.selection .selection-container-category-points .category .column-container .column .select-heading-container span {
-    height: 122%;
-    text-align: center;
-    color: white;
-    font-size: 30px
-}
-
-.selection .selection-container-category-points .category .column-container .column .select {
-    width: 100%;
-    font-size: 35px;
+.selection .selection-container-category-points .category .question-container .select {
+    min-width: 150px;
+    font-size: 50px;
     border-width: 3px;
     background-color: #f3f3f3;
     text-decoration: none;
     font-weight: 800;
+    padding: 5px 15px 5px 15px;
 }
 
 .selection-used {
