@@ -18,8 +18,8 @@ const R1Selection = () => {
     }, [])
 
     //adds used questions
-    function newUsedQuestion(category, points) {
-        usedQuestions.r1[category-1].push(points-1);
+    function newUsedQuestion(column, points) {
+        usedQuestions.r1[column-1].push(points-1);
     }
 
     return (
