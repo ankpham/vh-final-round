@@ -29,6 +29,7 @@ const ViewQuestion = () => {
     const [letterIcon, setLetterIcon] = useState('');
 
     const [question, setQuestion] = useState('no question');
+    const [images, setImages] = useState([]);
     const [choice1, setChoice1] = useState('no choice');
     const [choice2, setChoice2] = useState('no choice');
     const [choice3, setChoice3] = useState('no choice');
@@ -109,6 +110,21 @@ const ViewQuestion = () => {
             }
 
             setQuestion(response.data.question);
+
+            if (response.data.images) {
+                if (response.data.images.indexOf(";") >= 0) {
+                    setImages(
+                       response.data.images.split(";")
+                    )
+                }
+                else {
+                    setImages(
+                        [response.data.images]
+                    )
+                }
+            }
+            console.log(images)
+
             let arr = [response.data.correctChoice,response.data.otherChoices[0],response.data.otherChoices[1],response.data.otherChoices[2]]
 
             setChoice1(arr[0]);
@@ -176,7 +192,25 @@ const ViewQuestion = () => {
                 <div ref={timerElementMC} className='timer'>
                     <Timer seconds={seconds}/>
                 </div>
-                <h1 ref={questionElement} className='question-heading'>{question} <b style={{color: 'yellow'}} className='question-heading'>{/*(10 Điểm)*/}</b></h1>
+                <h1 ref={questionElement} className='question-heading'>{question} <b style={{color: 'yellow'}} className='question-heading'>10 Điểm</b></h1>
+                <div className='question-image-container-mc'>
+                    {
+                        images.map((image, idx) => (
+                            <>
+                            <img className='question-image' src={image} key={idx}/>
+                            </>
+                        ))
+                    }
+                </div>
+                <div className='question-image-container-mc question-image-container-mc-right'>
+                    {
+                        images.map((image, idx) => (
+                            <>
+                            <img className='question-image' src={image} key={idx}/>
+                            </>
+                        ))
+                    }
+                </div>
             </div>
             <div style={{display: multipleChoiceAnswersDisplayStyle}} className="choices">
                 <div className='choice-container'>
@@ -231,6 +265,15 @@ const ViewQuestion = () => {
                 <Timer seconds={seconds}/>
             </div>
             <h1 ref={questionElement} className='question-heading'>{newLine(question)}</h1>
+                <div className='question-image-container-oer'>
+                    {
+                        images.map((images, idx) => (
+                            <>
+                            <img className='question-image' src={images} key={idx}/>
+                            </>
+                        ))
+                    }
+                </div>
             <Link to={"/view-oer-question/" + category + "/" + subcategory + "/" + points} style={{display: openEndedAnswerButtonDisplayStyle,color: 'green', cursor: 'pointer', border: '1px solid green', padding: '5px', marginTop: "15vh"}} className='question-heading'>Câu Trả Lời Đúng</Link>
         </div>
         </>
