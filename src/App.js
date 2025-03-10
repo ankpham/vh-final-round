@@ -9,9 +9,11 @@ import RoundSelection from './pages/RoundSelection';
 import R1Home from './pages/R1Home';
 import R2Home from './pages/R2Home';
 import R3Home from './pages/R3Home';
+import R4Home from './pages/R4Home';
 import R1Selection from './pages/R1Selection';
 import R2Selection from './pages/R2Selection';
 import R3Selection from './pages/R3Selection';
+import R4Selection from './pages/R4Selection';
 import ViewQuestion from './pages/ViewQuestion';
 import ViewOERAnswer from './pages/ViewOERAnswer';
 
@@ -41,9 +43,11 @@ function App() {
         <Route path="/r1-home" element={<R1Home/>} exact/>
         <Route path="/r2-home" element={<R2Home/>} exact/>
         <Route path="/r3-home" element={<R3Home/>} exact/>
+        <Route path="/r4-home" element={<R4Home/>} exact/>
         <Route path="/r1-selection" element={<R1Selection/>} exact/>
         <Route path="/r2-selection" element={<R2Selection/>} exact/>
         <Route path="/r3-selection" element={<R3Selection/>} exact/>
+        <Route path="/r4-selection" element={<R4Selection/>} exact/>
       </Routes>
     </Router>
     {/*remove overflow hidden to add scrollbar and access full screen button*/}
