@@ -25,4 +25,4 @@ const PlayAudio = (sound) => {
     }
 }
 
-export {PlayAudio};
+export default PlayAudio;

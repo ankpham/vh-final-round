@@ -5,9 +5,9 @@ import Timer from './Timer';
 import {TbLetterA, TbLetterB, TbLetterC, TbLetterD} from 'react-icons/tb';
 import {BsCheckLg, BsXLg} from 'react-icons/bs';
 import { useParams, Link } from "react-router-dom";
-import { PlayAudio } from '../components/PlayAudio';
-import { RandomizeChoices } from '../components/RandomizeChoices';
-import { SetChoiceAtBottom } from '../components/SetChoiceAtBottom';
+import PlayAudio from '../components/PlayAudio';
+import RandomizeChoices from '../components/RandomizeChoices';
+import SetChoiceAtBottom from '../components/SetChoiceAtBottom';
 
 const ViewQuestion = () => {
     const timerElementMC = useRef(null);

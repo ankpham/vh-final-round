@@ -27,4 +27,4 @@ const SetChoiceAtBottom = (arrOfChoices, choiceToBeAtBottom) => {
     return newArr;
 }
 
-export {SetChoiceAtBottom}
+export default SetChoiceAtBottom

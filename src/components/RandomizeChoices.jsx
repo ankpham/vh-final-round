@@ -13,4 +13,4 @@ const RandomizeChoices = (correctChoice, otherChoice1, otherChoice2, otherChoice
     return [arr[0], arr[1], arr[2], arr[3]];
 }
 
-export {RandomizeChoices}
+export default RandomizeChoices
