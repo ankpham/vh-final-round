@@ -109,6 +109,10 @@ const ViewQuestion = () => {
                 setMultipleChoiceAnswersDisplayStyle("block")
             }
 
+            if (!response.data.correctChoice) {
+                setOpenEndedAnswerButtonDisplayStyle("none")
+            }
+
             setQuestion(response.data.question);
 
             if (response.data.images) {

@@ -43,12 +43,9 @@ const R1Selection = () => {
                             <Link onClick={() => newUsedQuestion(1,10)} to={"/view-question/4/1/10/15"} className="select border-red">10</Link>
                             <Link onClick={() => newUsedQuestion(1,11)} to={"/view-question/4/1/11/15"} className="select border-red">11</Link>
                             <Link onClick={() => newUsedQuestion(1,12)} to={"/view-question/4/1/12/15"} className="select border-red">12</Link>
-                            <Link onClick={() => newUsedQuestion(1,13)} to={"/view-question/4/1/13/15"} className="select border-red">13</Link>
-                            <Link onClick={() => newUsedQuestion(1,14)} to={"/view-question/4/1/14/15"} className="select border-red">14</Link>
-                            <Link onClick={() => newUsedQuestion(1,15)} to={"/view-question/4/1/15/15"} className="select border-red">15</Link>
-                            <Link onClick={() => newUsedQuestion(1,16)} to={"/view-question/4/2/1/15"} className="select select-bottom border-lightblue">Câu Dự Bị I</Link>
-                            <Link onClick={() => newUsedQuestion(1,17)} to={"/view-question/4/2/2/15"} className="select select-bottom border-lightblue">Câu Dự Bị II</Link>
-                            <Link onClick={() => newUsedQuestion(1,18)} to={"/view-question/4/2/3/15"} className="select select-bottom border-lightblue">Câu Dự Bị III</Link>
+                            <Link onClick={() => newUsedQuestion(1,13)} to={"/view-question/4/2/1/15"} className="select select-bottom border-lightblue">Câu Dự Bị I</Link>
+                            <Link onClick={() => newUsedQuestion(1,14)} to={"/view-question/4/2/2/15"} className="select select-bottom border-lightblue">Câu Dự Bị II</Link>
+                            <Link onClick={() => newUsedQuestion(1,15)} to={"/view-question/4/2/3/15"} className="select select-bottom border-lightblue">Câu Dự Bị III</Link>
                         </div>
                     </div>
                 </div>
