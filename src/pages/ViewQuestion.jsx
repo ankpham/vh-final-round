@@ -181,6 +181,39 @@ const ViewQuestion = () => {
     const displayC = arr[2];
     const displayD = arr[3];
 
+    //New line and bold
+    const parseNewLine = (str) => {
+        let newArr = str.split("*newline*");
+
+        let arrOfObjects = [];
+
+        for (let i = 0;i < newArr.length;i++) {
+            arrOfObjects.push({
+                data: newArr[i] 
+            })
+        }
+
+        let answer = (
+            <>
+            {arrOfObjects.map((item) => (
+                <div>
+                    {parseBoldText(item.data)}<br></br>
+                </div>
+            ))}
+            </>
+        )
+
+        return answer;
+    }
+    const parseBoldText = (input) => {
+        return input.split(/(\*\*.*?\*\*)/).map((part, index) => {
+          if (part.match(/\*\*(.*?)\*\*/)) {
+            return <strong key={index}>{part.replace(/\*\*/g, "")}</strong>;
+          }
+          return part;
+        });
+    }
+
     const multipleChoice = (
             <>
             <div style={{display: multipleChoiceDisplayStyle}} className='question-row'>
@@ -192,12 +225,12 @@ const ViewQuestion = () => {
                 <div ref={timerElementMC} className='timer'>
                     <Timer seconds={seconds}/>
                 </div>
-                <h1 ref={questionElement} className='question-heading'>{question} <b style={{color: 'yellow'}} className='question-heading'>10 Điểm</b></h1>
+                <h1 ref={questionElement} className='question-heading'>{parseNewLine(question)} <b style={{color: 'yellow'}} className='question-heading'>(10 Điểm)</b></h1>
                 <div className='question-image-container-mc'>
                     {
                         images.map((image, idx) => (
                             <>
-                            <img className='question-image' src={image} key={idx}/>
+                            <img alt={image} className='question-image' src={image} key={idx}/>
                             </>
                         ))
                     }
@@ -206,7 +239,7 @@ const ViewQuestion = () => {
                     {
                         images.map((image, idx) => (
                             <>
-                            <img className='question-image' src={image} key={idx}/>
+                            <img alt={image} className='question-image' src={image} key={idx}/>
                             </>
                         ))
                     }
@@ -229,30 +262,6 @@ const ViewQuestion = () => {
             </>
     )
 
-    //New line for oer snswers
-    const newLine = (str) => {
-        let newArr = str.split("*newline*");
-
-        let arrOfObjects = [];
-
-        for (let i = 0;i < newArr.length;i++) {
-            arrOfObjects.push({
-                data: newArr[i] 
-            })
-        }
-
-        let answer = (
-            <>
-            {arrOfObjects.map((item) => (
-                <div>
-                    {item.data}<br></br>
-                </div>
-            ))}
-            </>
-        )
-
-        return answer;
-    }
     const openEnded = (
         <>
         <div style={{display: openEndedDisplayStyle}} className='question-row'>
@@ -264,12 +273,12 @@ const ViewQuestion = () => {
             <div ref={timerElementOER} className='timer'>
                 <Timer seconds={seconds}/>
             </div>
-            <h1 ref={questionElement} className='question-heading'>{newLine(question)}</h1>
+            <h1 ref={questionElement} className='question-heading'>{parseNewLine(question)}</h1>
                 <div className='question-image-container-oer'>
                     {
-                        images.map((images, idx) => (
+                        images.map((image, idx) => (
                             <>
-                            <img className='question-image' src={images} key={idx}/>
+                            <img alt={image} className='question-image' src={image} key={idx}/>
                             </>
                         ))
                     }

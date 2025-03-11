@@ -22,13 +22,19 @@
 
 .question-heading {
     font-size: 40px;
-    font-weight: 600;
+    font-weight: 550;
     text-align: center;
     padding-top: 1vh;
     margin-left: auto;
     margin-right: auto;
     color: midnightblue;
     width: 70%;
+}
+
+
+.question-heading strong {
+    font-weight: 600;
+    font-size: 40px;
 }
 
 .question-image-container-oer {
@@ -71,7 +77,7 @@
 .oer-answer {
     width: 70%;
     line-height: 7.5vh;
-    font-weight: bold;
+    font-weight: 550;
     font-size: 60px;
     padding-top: 10vh;
 }
@@ -127,6 +133,7 @@
     box-shadow: none;
     word-break: break-word;
     color: midnightblue;
+    font-weight: 550;
 }
 
 .question .choices .choice-container div:hover {

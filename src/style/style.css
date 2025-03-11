@@ -12,8 +12,7 @@
 body {
     overflow: hidden; /*remove overflow hidden to add scrollbar and access full screen button*/
     color: midnightblue;
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: 600;
+    font-weight: 550;
 }
 
 .container {
