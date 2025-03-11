@@ -225,7 +225,7 @@ const ViewQuestion = () => {
                 <div ref={timerElementMC} className='timer'>
                     <Timer seconds={seconds}/>
                 </div>
-                <h1 ref={questionElement} className='question-heading'>{parseNewLine(question)} <b style={{color: 'yellow'}} className='question-heading'>(10 Điểm)</b></h1>
+                <h1 ref={questionElement} className='question-heading'>{parseNewLine(question)} <b style={{color: 'yellow'}} className='question-heading'>{/*(10 Điểm)*/}</b></h1>
                 <div className='question-image-container-mc'>
                     {
                         images.map((image, idx) => (
